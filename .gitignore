@@ -9,3 +9,11 @@
 .cxx
 local.properties
 /.claude/settings.local.json
+**/build/
+*.apk
+*.aab
+*.aar
+*.dex
+*.class
+*.hprof
+*.so
