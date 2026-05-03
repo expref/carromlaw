@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import kotlin.math.cos
 import kotlin.math.sin
+import kotlin.math.sqrt
 
 internal const val BREAK_TOTAL_STEPS = 5
 private const val STEP_DURATION_MS = 1300L
@@ -122,7 +123,10 @@ internal fun piecesFor(step: Int): List<CarromPiece> {
     val cy = 0.5f
     val pieceR = 0.022f
     val r1 = 2f * pieceR
-    val r2 = 4f * pieceR
+    // Hex close-packing: outer coins aligned with inner coins sit at 4r; outer coins
+    // between adjacent inner coins drop inward to 2√3·r so every coin touches its neighbours.
+    val rOuterAligned = 4f * pieceR
+    val rOuterBetween = 2f * sqrt(3f) * pieceR
     val out = mutableListOf<CarromPiece>()
 
     out += CarromPiece(PieceColor.QUEEN, cx, cy)
@@ -148,25 +152,26 @@ internal fun piecesFor(step: Int): List<CarromPiece> {
         val angle = Math.toRadians(i * 30.0 - 90.0)
         out += CarromPiece(
             color = PieceColor.WHITE,
-            xFraction = cx + (r2 * cos(angle)).toFloat(),
-            yFraction = cy + (r2 * sin(angle)).toFloat()
+            xFraction = cx + (rOuterAligned * cos(angle)).toFloat(),
+            yFraction = cy + (rOuterAligned * sin(angle)).toFloat()
         )
     }
     if (step < 4) return out
 
     val fillColors = listOf(
-        PieceColor.BLACK, PieceColor.BLACK, PieceColor.WHITE,
-        PieceColor.BLACK, PieceColor.BLACK, PieceColor.WHITE,
-        PieceColor.BLACK, PieceColor.BLACK, PieceColor.WHITE
+        PieceColor.BLACK, PieceColor.WHITE, PieceColor.BLACK,
+        PieceColor.BLACK, PieceColor.WHITE, PieceColor.BLACK,
+        PieceColor.BLACK, PieceColor.WHITE, PieceColor.BLACK
     )
     var fillIdx = 0
     for (i in 0 until 12) {
         if (i in yArmOuterIndices) continue
+        val r = if (i % 2 == 0) rOuterAligned else rOuterBetween
         val angle = Math.toRadians(i * 30.0 - 90.0)
         out += CarromPiece(
             color = fillColors[fillIdx],
-            xFraction = cx + (r2 * cos(angle)).toFloat(),
-            yFraction = cy + (r2 * sin(angle)).toFloat()
+            xFraction = cx + (r * cos(angle)).toFloat(),
+            yFraction = cy + (r * sin(angle)).toFloat()
         )
         fillIdx++
     }
