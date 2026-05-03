@@ -28,6 +28,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.AccessibilityNew
+import androidx.compose.material.icons.filled.Adjust
 import androidx.compose.material.icons.filled.Block
 import androidx.compose.material.icons.filled.Bolt
 import androidx.compose.material.icons.filled.Bookmark
@@ -51,13 +53,17 @@ import androidx.compose.material.icons.filled.LibraryBooks
 import androidx.compose.material.icons.filled.Lightbulb
 import androidx.compose.material.icons.filled.ManageSearch
 import androidx.compose.material.icons.filled.MenuBook
+import androidx.compose.material.icons.filled.PanTool
+import androidx.compose.material.icons.filled.PinDrop
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Quiz
 import androidx.compose.material.icons.filled.Replay
+import androidx.compose.material.icons.filled.Report
 import androidx.compose.material.icons.filled.Scoreboard
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.SwapHoriz
+import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.filled.TouchApp
 import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material.icons.filled.Warning
@@ -915,24 +921,64 @@ fun FoulCheckerScreen(
 
 @Composable
 fun FoulCategoryCard(category: FoulCategory, onClick: () -> Unit) {
+    val (icon, iconTint) = foulCategoryVisual(category.id)
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .height(110.dp)
             .clickable { onClick() }
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(
-                text = category.title,
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(
-                text = "${category.scenarios.size} scenarios",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.primary
+        Row(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = category.title,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "${category.scenarios.size} scenarios",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.primary
+                )
+            }
+            Spacer(modifier = Modifier.size(12.dp))
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                modifier = Modifier.size(48.dp),
+                tint = iconTint
             )
         }
+    }
+}
+
+/**
+ * Picks a glyph and tint that fit each foul-category's nature, so the cards
+ * carry a recognisable trailing visual on the Foul Checker home. Tints: queen
+ * red (tertiary) for the categories that are unambiguously violations of
+ * person/queen rules; rosewood (primary) for the technical / procedural ones.
+ */
+@Composable
+private fun foulCategoryVisual(categoryId: String): Pair<ImageVector, Color> {
+    val primary = MaterialTheme.colorScheme.primary
+    val accent = MaterialTheme.colorScheme.tertiary
+    return when (categoryId) {
+        "striker_fouls"        -> Icons.Filled.Adjust to primary            // striker = concentric target
+        "improper_strokes"     -> Icons.Filled.PanTool to primary           // hand / wrong stroke
+        "body_position_fouls"  -> Icons.Filled.AccessibilityNew to primary  // body posture
+        "queen_fouls"          -> Icons.Filled.Brightness1 to accent        // queen disc
+        "placement_fouls"      -> Icons.Filled.PinDrop to primary           // placement marker
+        "conduct_fouls"        -> Icons.Filled.Report to accent             // misconduct
+        "timing_fouls"         -> Icons.Filled.Timer to primary             // clock
+        else                   -> Icons.Filled.Warning to accent
     }
 }
 
