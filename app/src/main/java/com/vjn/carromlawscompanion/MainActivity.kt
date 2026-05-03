@@ -755,6 +755,7 @@ fun SearchScreen(
     }
 
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.primary,
         topBar = {
             TopAppBar(
                 title = { Text("Search Rules") },
@@ -767,8 +768,9 @@ fun SearchScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
                 )
             )
         }
@@ -803,7 +805,7 @@ fun SearchScreen(
                 Text(
                     text = "Found ${searchResults.size} matching rules",
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.primary
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
                 Spacer(modifier = Modifier.height(8.dp))
             }
@@ -831,7 +833,11 @@ fun SearchResultCard(result: SearchResult, onClick: () -> Unit, searchQuery: Str
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable { onClick() },
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.background
+        ),
+        border = BorderStroke(0.7.dp, CarromLineBlack.copy(alpha = 0.6f))
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
@@ -869,6 +875,7 @@ fun FoulCheckerScreen(
     val categories = remember { repository.getFoulCategories() }
 
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.primary,
         topBar = {
             TopAppBar(
                 title = { Text("Foul Checker") },
@@ -881,8 +888,9 @@ fun FoulCheckerScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
                 )
             )
         }
@@ -896,12 +904,14 @@ fun FoulCheckerScreen(
             Text(
                 text = "What kind of issue happened?",
                 style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onPrimary
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = "Tap a category to see scenarios and consequences",
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onPrimary
             )
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -929,7 +939,11 @@ fun FoulCategoryCard(category: FoulCategory, onClick: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .height(110.dp)
-            .clickable { onClick() }
+            .clickable { onClick() },
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.background
+        ),
+        border = BorderStroke(0.7.dp, CarromLineBlack.copy(alpha = 0.6f))
     ) {
         Row(
             modifier = Modifier
@@ -998,6 +1012,7 @@ fun FoulCategoryScreen(
     }
 
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.primary,
         topBar = {
             TopAppBar(
                 title = {
@@ -1015,8 +1030,9 @@ fun FoulCategoryScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
                 )
             )
         }
@@ -1044,7 +1060,13 @@ fun FoulCategoryScreen(
 
 @Composable
 fun FoulScenarioCard(scenario: FoulScenario) {
-    Card(modifier = Modifier.fillMaxWidth()) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.background
+        ),
+        border = BorderStroke(0.7.dp, CarromLineBlack.copy(alpha = 0.6f))
+    ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
                 text = scenario.question.expandAbbreviations(),
@@ -1093,6 +1115,7 @@ fun ScenarioSimulatorScreen(
     val scoringScenarios = remember { repository.getScoringScenarios() }
 
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.primary,
         topBar = {
             TopAppBar(
                 title = { Text("Queen Scenarios") },
@@ -1105,8 +1128,9 @@ fun ScenarioSimulatorScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
                 )
             )
         }
@@ -1120,12 +1144,14 @@ fun ScenarioSimulatorScreen(
             Text(
                 text = scoringScenarios.title,
                 style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onPrimary
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = scoringScenarios.description,
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onPrimary
             )
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -1142,7 +1168,13 @@ fun ScenarioSimulatorScreen(
 
 @Composable
 fun ScoringScenarioCard(scenario: ScoringScenario) {
-    Card(modifier = Modifier.fillMaxWidth()) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.background
+        ),
+        border = BorderStroke(0.7.dp, CarromLineBlack.copy(alpha = 0.6f))
+    ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
                 text = "SITUATION",
@@ -1238,6 +1270,7 @@ fun BookmarksScreen(
     }
 
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.primary,
         topBar = {
             TopAppBar(
                 title = { Text("Bookmarks") },
@@ -1250,8 +1283,9 @@ fun BookmarksScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
                 )
             )
         }
@@ -1269,17 +1303,19 @@ fun BookmarksScreen(
                     imageVector = Icons.Filled.BookmarkBorder,
                     contentDescription = null,
                     modifier = Modifier.padding(16.dp),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    tint = MaterialTheme.colorScheme.onPrimary
                 )
                 Text(
                     text = "No bookmarks yet",
                     style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = "Tap the bookmark icon on any rule to save it for quick access",
-                    style = MaterialTheme.typography.bodyMedium
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
             }
         } else {
@@ -1313,7 +1349,11 @@ fun BookmarkRuleCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable { onClick() },
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.background
+        ),
+        border = BorderStroke(0.7.dp, CarromLineBlack.copy(alpha = 0.6f))
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Row(
@@ -1366,6 +1406,7 @@ fun QuizScreen(
     var quizState by remember { mutableStateOf<QuizState>(QuizState.NotStarted) }
 
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.primary,
         topBar = {
             TopAppBar(
                 title = { Text("Quiz Mode") },
@@ -1378,8 +1419,9 @@ fun QuizScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
                 )
             )
         }
@@ -1604,7 +1646,13 @@ fun QuizQuestionScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         // Question
-        Card(modifier = Modifier.fillMaxWidth()) {
+        Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.background
+        ),
+        border = BorderStroke(0.7.dp, CarromLineBlack.copy(alpha = 0.6f))
+    ) {
             Text(
                 text = question.questionText.expandAbbreviations(),
                 style = MaterialTheme.typography.titleMedium,
@@ -1842,6 +1890,7 @@ fun SettingsScreen(
     val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.primary,
         topBar = {
             TopAppBar(
                 title = { Text("Settings") },
@@ -1854,8 +1903,9 @@ fun SettingsScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
                 )
             )
         },
@@ -1871,13 +1921,14 @@ fun SettingsScreen(
             Text(
                 text = "Font Size",
                 style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onPrimary
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = "Adjusts text size throughout the app",
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = MaterialTheme.colorScheme.onPrimary
             )
             Spacer(modifier = Modifier.height(16.dp))
 
