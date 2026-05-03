@@ -1,0 +1,472 @@
+{
+  "metadata": {
+    "title": "Official Laws of Carrom",
+    "publisher": "International Carrom Federation",
+    "year_adopted": 1993,
+    "total_sections": 18,
+    "total_rules": 151
+  },
+  "sections": [
+    {
+      "id": "I",
+      "number": 1,
+      "title": "Standard Equipment",
+      "description": "Specifications for carrom board, carrommen, striker, and accessories",
+      "rules": [
+        {
+          "id": "A.1",
+          "title": "Playing Surface",
+          "text": "The playing surface of the Carrom Board should be of plywood or of any other wood equally smooth and be of not less than 8 mm in thickness and of a minimum of 73.50 cm and a maximum of 74 cm square with its surface completely smooth.",
+          "tags": ["equipment", "board", "surface"]
+        },
+        {
+          "id": "A.2",
+          "title": "Frames",
+          "text": "Wooden frames with inside curved corners made of Rosewood or any other hard wood, minimum height 1.90 cm and maximum 2.54 cm from the playing surface. Breadth not less than 6.35 cm and not more than 7.60 cm.",
+          "tags": ["equipment", "frame"]
+        },
+        {
+          "id": "A.3",
+          "title": "Pockets",
+          "text": "The pockets of the four corners shall be round inwardly, 4.45 cm in diameter with admissible variation of not more than 0.15 cm.",
+          "tags": ["equipment", "pockets"]
+        },
+        {
+          "id": "A.4",
+          "title": "Base Lines",
+          "text": "Two straight lines of 47 cm in length, black in colour, drawn on each of the four sides parallel to the frame. Lower line is 10.15 cm from frame, upper line 3.18 cm from lower line. Base circles of 3.18 cm diameter at either end with red center of 2.54 cm.",
+          "tags": ["equipment", "lines"]
+        },
+        {
+          "id": "A.5",
+          "title": "Arrows",
+          "text": "Four black arrows at each corner at 45 degrees, passing through the gap between Base circles, pointing toward pocket center, leaving 5.00 cm clearance from pocket edge. Maximum length 25.70 cm.",
+          "tags": ["equipment", "arrows"]
+        },
+        {
+          "id": "A.6",
+          "title": "Centre Circle",
+          "text": "Exactly in the centre of the Carrom Board there shall be a circle of 3.18 cm in diameter drawn black in colour, coloured red.",
+          "tags": ["equipment", "center"]
+        },
+        {
+          "id": "A.7",
+          "title": "Outer Circle",
+          "text": "A circle of 17.00 cm in diameter with the centre point as its centre, drawn black with admissible variation of 0.30 cm.",
+          "tags": ["equipment", "circle"]
+        },
+        {
+          "id": "B",
+          "title": "Carrommen",
+          "text": "Good quality wood, circular shape. Diameter 3.02 to 3.18 cm. Thickness 0.70 to 0.90 cm. Weight 5.00 to 5.50 grams. Nine whites, nine blacks, one red Queen.",
+          "tags": ["equipment", "carrommen", "pieces"]
+        },
+        {
+          "id": "C",
+          "title": "Striker",
+          "text": "Smooth and round, diameter not more than 4.13 cm, weighing not more than 15.00 gms. No metal visible. Engraved decent designs permissible.",
+          "tags": ["equipment", "striker"]
+        },
+        {
+          "id": "D",
+          "title": "Table or Stand",
+          "text": "Height between 63.00 cm and 70.00 cm. Board must not be uneven or shaking when placed on it.",
+          "tags": ["equipment", "table"]
+        },
+        {
+          "id": "E",
+          "title": "Stool or Chair",
+          "text": "Height between 40.00 cm and 50.00 cm. If chair is used, it shall be armless.",
+          "tags": ["equipment", "chair"]
+        },
+        {
+          "id": "F",
+          "title": "Powder",
+          "text": "High quality powder to keep playing surface smooth and dry. Not wet. Spread evenly using pouches/containers.",
+          "tags": ["equipment", "powder"]
+        },
+        {
+          "id": "G",
+          "title": "Nets",
+          "text": "Pockets shall be fully covered from beneath by nets fixed at bottom. Each net shall hold at least 10 C/m.",
+          "tags": ["equipment", "nets"]
+        },
+        {
+          "id": "H",
+          "title": "Light",
+          "text": "Hung at convenient height with conical/square shade (preferably metal). Inner shade snow-white. Bulb 60-100 watts, preferably transparent white. Adjustable on player request.",
+          "tags": ["equipment", "lighting"]
+        }
+      ]
+    },
+    {
+      "id": "II",
+      "number": 2,
+      "title": "Interpretations",
+      "description": "Definitions of terms used throughout the Laws",
+      "rules": [
+        {"id": "1", "title": "Laws", "text": "'Laws' shall mean the Laws of Carrom.", "tags": ["definition"]},
+        {"id": "2a", "title": "Proper", "text": "'Proper' shall mean in accordance with the Laws.", "tags": ["definition"]},
+        {"id": "2b", "title": "Improper", "text": "'Improper' shall mean contrary to the Laws.", "tags": ["definition"]},
+        {"id": "3", "title": "C/B", "text": "'C/B' shall mean Carrom Board.", "tags": ["definition"]},
+        {"id": "4", "title": "C/m", "text": "'C/m' shall mean Carromman / Carrommen.", "tags": ["definition"]},
+        {"id": "5", "title": "Board", "text": "'Board' shall mean break to completion.", "tags": ["definition"]},
+        {"id": "6", "title": "Break", "text": "'Break' shall mean the first stroke of a board.", "tags": ["definition"]},
+        {"id": "7", "title": "Finish", "text": "'Finish' shall mean the completion of the board.", "tags": ["definition"]},
+        {"id": "8", "title": "Player", "text": "'Player' shall mean a Carrom player.", "tags": ["definition"]},
+        {"id": "9", "title": "Placing", "text": "'Placing' shall mean keeping the penalty and/or Due C/m in a flat position within the Outer circle only by the player permitted to do so. Queen and/or jumped C/m always placed by Umpire in Centre Circle.", "tags": ["definition"]},
+        {"id": "10", "title": "Pocketing", "text": "'Pocketing' shall mean putting C/m and/or Queen in the pocket by a proper/improper stroke.", "tags": ["definition"]},
+        {"id": "11", "title": "Push", "text": "'Push' shall mean a jerk or sudden motion of the elbow of the playing hand instead of striking the Striker with the tip of the finger.", "tags": ["definition", "foul"]},
+        {"id": "12", "title": "Queen", "text": "'Queen' shall mean the red C/m.", "tags": ["definition", "queen"]},
+        {"id": "13", "title": "Due", "text": "'Due' shall mean pocketing the Striker with or without C/m.", "tags": ["definition", "penalty"]},
+        {"id": "14", "title": "Penalty", "text": "'Penalty' shall mean punishment for infringement or violation of the Laws.", "tags": ["definition", "penalty"]},
+        {"id": "15", "title": "Covering", "text": "'Covering' shall mean pocketing one of his own C/m by a player in the same or immediate subsequent stroke, when or after the Queen is pocketed.", "tags": ["definition", "queen"]},
+        {"id": "16", "title": "Shot", "text": "'Shot' shall mean a pair or cannon.", "tags": ["definition"]},
+        {"id": "16a", "title": "Pair", "text": "Placing a C/m within the Outer Circle near another C/m and/or Queen with space between, where the existing C/m faces the general direction of a pocket.", "tags": ["definition"]},
+        {"id": "16b", "title": "Cannon", "text": "Placing a C/m within the Outer Circle near another C/m and/or Queen with no space between, where the existing C/m faces the general direction of a pocket.", "tags": ["definition"]},
+        {"id": "17", "title": "Thumbing", "text": "'Thumbing' shall mean taking a stroke with the thumb.", "tags": ["definition"]},
+        {"id": "18", "title": "Turn", "text": "'Turn' shall mean the right to strike.", "tags": ["definition"]},
+        {"id": "19", "title": "Chief Referee", "text": "'Chief Referee' shall mean an official appointed to supervise and/or control a match.", "tags": ["definition"]},
+        {"id": "20", "title": "Umpire", "text": "'Umpire' shall mean an official appointed to supervise and/or control a match.", "tags": ["definition"]},
+        {"id": "21a", "title": "Opponent in Singles", "text": "The player presently not having his turn of play.", "tags": ["definition"]},
+        {"id": "21b", "title": "Opponent in Doubles", "text": "The player sitting on the left and/or right side of the player presently having his turn to play.", "tags": ["definition"]},
+        {"id": "22", "title": "Hand", "text": "'Hand' shall mean the portion of the playing hand from the fingers up to the wrist.", "tags": ["definition"]},
+        {"id": "23", "title": "Finger", "text": "'Finger' shall mean the portion of the nail side of a finger up to the second joint.", "tags": ["definition"]},
+        {"id": "24", "title": "Imaginary Lines", "text": "Lines drawn in extension of the arrows between the Base Circles.", "tags": ["definition"]},
+        {"id": "25", "title": "Stroke", "text": "'Stroke' shall mean hitting the C/m by the Striker directly or indirectly.", "tags": ["definition"]},
+        {"id": "26a", "title": "White Slam", "text": "Pocketing all nine white C/m and the Queen as per Laws in the first turn of play. Also called 'Break to Finish'.", "tags": ["definition", "scoring"]},
+        {"id": "26b", "title": "Black Slam", "text": "Pocketing all the remaining black C/m with or without Queen as per Laws in the first turn of play.", "tags": ["definition", "scoring"]}
+      ]
+    },
+    {
+      "id": "III",
+      "number": 3,
+      "title": "Sitting Position",
+      "description": "Rules for player seating during play",
+      "rules": [
+        {"id": "27", "title": "Singles Sitting", "text": "In Singles, the players shall sit opposite to each other.", "tags": ["sitting", "singles"]},
+        {"id": "28", "title": "Doubles Sitting", "text": "In Doubles, the partners shall sit opposite to each other, occupying all four sides.", "tags": ["sitting", "doubles"]},
+        {"id": "29", "title": "Position Changes", "text": "Position adopted before turn may be changed at any time provided the chair/stool is not lifted, moved, or disturbed during turn of play.", "tags": ["sitting"]},
+        {"id": "30a", "title": "Body Contact", "text": "During the board no part of the body, except the playing arm, shall touch the Carrom Board, stand or table.", "tags": ["sitting", "foul"]},
+        {"id": "30b", "title": "Clothing Exception", "text": "Wearing/clothing, ring, bangles, watch worn by a player are exempted during turn, but should not touch the playing surface.", "tags": ["sitting"]},
+        {"id": "31", "title": "Seat Adjustment", "text": "Use of any material to raise or adjust the height of the seat is permissible only after completion of the board.", "tags": ["sitting"]},
+        {"id": "32", "title": "Body Beyond Lines", "text": "No part of the body, except the hand of the player, shall go beyond the imaginary lines of the arrows.", "tags": ["sitting", "foul"]}
+      ]
+    },
+    {
+      "id": "IV",
+      "number": 4,
+      "title": "How to Strike",
+      "description": "Rules for the proper striking technique",
+      "rules": [
+        {"id": "33", "title": "Strike Not Push", "text": "The Striker shall be struck and not pushed.", "tags": ["striking", "foul"]},
+        {"id": "34", "title": "Finger Use", "text": "The Stroke shall be made with the finger with or without support of other fingers.", "tags": ["striking"]},
+        {"id": "35", "title": "Either Hand", "text": "Any hand may be used in play.", "tags": ["striking"]},
+        {"id": "36", "title": "Hand on Surface", "text": "While taking the stroke, the hand may touch the playing surface.", "tags": ["striking"]},
+        {"id": "37a", "title": "Elbow Position", "text": "The elbow of the playing hand shall not come within the playing surface nor extend beyond the imaginary lines of the arrows.", "tags": ["striking", "foul"]},
+        {"id": "37b", "title": "Hand Crossing", "text": "The hand may cross the arrow.", "tags": ["striking"]},
+        {"id": "38a", "title": "No External Support", "text": "Taking support of Stool/Chair, Stand/Table, or keeping legs on rim of stand/table is not permissible.", "tags": ["striking", "foul"]},
+        {"id": "38b", "title": "Body Rest Allowed", "text": "Hands may rest on his body, and legs may rest on the rim of the stool or chair on which he sits.", "tags": ["striking"]}
+      ]
+    },
+    {
+      "id": "V",
+      "number": 5,
+      "title": "Toss",
+      "description": "Coin toss procedure at start of match",
+      "rules": [
+        {"id": "39a", "title": "Toss Procedure", "text": "Umpire conducts toss by coin spin or calling C/m. Winner chooses side or option to strike first.", "tags": ["toss"]},
+        {"id": "39b", "title": "Doubles Toss", "text": "In Doubles, the pair winning the toss shall have the option as above.", "tags": ["toss", "doubles"]},
+        {"id": "39c", "title": "Side Choice", "text": "If break is chosen by winner, choice of side lies with losers, and winner shall sit first.", "tags": ["toss"]},
+        {"id": "39d", "title": "No Interchange", "text": "Once losers have sat down, they cannot interchange. Order of sitting continues throughout match.", "tags": ["toss"]}
+      ]
+    },
+    {
+      "id": "VI",
+      "number": 6,
+      "title": "Trial Board",
+      "description": "Practice rounds before the match begins",
+      "rules": [
+        {"id": "40", "title": "Trial Boards", "text": "There shall be two trial boards only after the toss and before the start of the match, one for each player or pair.", "tags": ["trial"]}
+      ]
+    },
+    {
+      "id": "VII",
+      "number": 7,
+      "title": "Break",
+      "description": "Rules for arranging carrommen and the opening stroke",
+      "rules": [
+        {"id": "41a", "title": "Arrangement Pattern", "text": "Queen in Centre Circle. First row: black and white C/m alternately around Queen. Second row: three white C/m form 'Y' shape with white C/m in first row. Remaining filled alternately. All in compact round, touching each other, within Outer Circle.", "tags": ["break", "setup"]},
+        {"id": "41b", "title": "Quick Arrangement", "text": "C/m should be arranged for the break with least possible loss of time after each board.", "tags": ["break"]},
+        {"id": "42", "title": "Who Breaks", "text": "Break is taken by a player who has chosen to strike first.", "tags": ["break"]},
+        {"id": "43", "title": "Color Assignment", "text": "Player who breaks has white C/m. Opponent has black C/m. Queen is common.", "tags": ["break"]},
+        {"id": "44", "title": "Valid Break", "text": "Break is considered to have been made if the Striker touches any of the C/m even slightly.", "tags": ["break"]},
+        {"id": "45a", "title": "Failed Break Chances", "text": "If no C/m touched, maximum two more chances allowed.", "tags": ["break"]},
+        {"id": "45b", "title": "Lost Break Right", "text": "After permissible chances with no C/m touched, right to break is lost. Turn passes to opponent who has black C/m. No re-arrangement permitted.", "tags": ["break"]},
+        {"id": "45c", "title": "Improper Break", "text": "If improper stroke or Striker pocketed without touching C/m during break, player loses turn. No Due/penalty applicable.", "tags": ["break", "foul"]},
+        {"id": "46", "title": "Break Timing", "text": "Break taken only after Umpire calls 'Play'. Stroke within 15 seconds of call.", "tags": ["break", "timing"]},
+        {"id": "47", "title": "Premature Break", "text": "If break made before 'Play' called, all pocketed C/m and/or Queen taken out. Additional C/m as penalty. Due declared. Player loses turn.", "tags": ["break", "foul"]}
+      ]
+    },
+    {
+      "id": "VIII",
+      "number": 8,
+      "title": "Turn of Play",
+      "description": "Rules governing whose turn it is and when",
+      "rules": [
+        {"id": "48", "title": "Continuing Turn", "text": "As long as a player pockets his own C/m and/or Queen per Laws, his turn continues. Otherwise it passes to opponent.", "tags": ["turn"]},
+        {"id": "49a-i", "title": "First Game Break", "text": "Player who chooses to break first board has white C/m. Turn to break passes alternately during the game.", "tags": ["turn"]},
+        {"id": "49a-ii", "title": "Second Game Break", "text": "In second game, player who did not have first turn to break has his turn first.", "tags": ["turn"]},
+        {"id": "49a-iii", "title": "Third Game Break", "text": "In third game, turn to break passes to first player.", "tags": ["turn"]},
+        {"id": "49b", "title": "Doubles Turn Order", "text": "In Doubles, turn passes to player sitting to right hand side of player who had his turn.", "tags": ["turn", "doubles"]},
+        {"id": "50", "title": "15-Second Limit", "text": "Player shall not take more than 15 seconds for making a stroke from the moment the C/m/Queen/Striker has come to rest and picked up by opponent.", "tags": ["turn", "timing"]},
+        {"id": "51", "title": "Out-of-Turn Play", "text": "If turn availed out of turn before Umpire could control, offending player loses board by number of C/m and Queen on C/B. If unnoticed till next stroke, turn allowed and next turn as per Laws.", "tags": ["turn", "foul"]}
+      ]
+    },
+    {
+      "id": "IX",
+      "number": 9,
+      "title": "How to Score",
+      "description": "Point values and scoring rules",
+      "rules": [
+        {"id": "52a", "title": "Winning Board", "text": "The player who completes pocketing all his C/m first wins the board.", "tags": ["scoring"]},
+        {"id": "52b", "title": "Point Values", "text": "Queen: 3 points up to and including 21 points. C/m: 1 point each.", "tags": ["scoring"]},
+        {"id": "53a", "title": "Calculating Points", "text": "Number of C/m of opponent on C/B is points gained by player in that board.", "tags": ["scoring"]},
+        {"id": "53b", "title": "Queen Credit", "text": "Player credited with Queen value only if he wins the board.", "tags": ["scoring", "queen"]},
+        {"id": "53c", "title": "Loser No Queen", "text": "Player who loses board not credited with Queen value, even if pocketed and covered Queen.", "tags": ["scoring", "queen"]},
+        {"id": "54", "title": "22-Point Threshold", "text": "Player loses advantage of additional 3 points for covering Queen once he reaches 22 points.", "tags": ["scoring", "queen"]},
+        {"id": "55", "title": "Maximum Per Board", "text": "Maximum points scorable in a board is 12. Any Due/penalty C/m automatically written off.", "tags": ["scoring"]},
+        {"id": "56a", "title": "Game Length", "text": "A game is 25 points or eight boards. Player reaching 25 first or leading at end of 8th board wins.", "tags": ["scoring"]},
+        {"id": "56b", "title": "Tiebreaker", "text": "Up to pre-quarter finals, equal score at end of 8th board means extra board. Toss before extra board for break only.", "tags": ["scoring"]},
+        {"id": "57", "title": "Match Format", "text": "All matches decided by best of three games only.", "tags": ["scoring"]}
+      ]
+    },
+    {
+      "id": "X",
+      "number": 10,
+      "title": "Change of Sides",
+      "description": "When and how players switch positions",
+      "rules": [
+        {"id": "58", "title": "Singles Change", "text": "In Singles, change of sides made in opposite direction at conclusion of each game.", "tags": ["sides"]},
+        {"id": "59", "title": "Doubles Change", "text": "In Doubles, change of sides made to next right hand side at conclusion of each game.", "tags": ["sides", "doubles"]},
+        {"id": "60a", "title": "Third Game Pre-QF", "text": "In third game for matches up to pre-quarter finals, change of sides after fourth board or when any player/pair reaches 13 points, whichever earlier.", "tags": ["sides"]},
+        {"id": "60b", "title": "Quarter Finals Onward", "text": "From Quarter Finals onwards, change of sides only after 13 points scored by any player/pair.", "tags": ["sides"]},
+        {"id": "60c", "title": "Unnoticed Change", "text": "Change of sides remaining unnoticed by Umpire or player takes place when noticed, but after completion of that board.", "tags": ["sides"]},
+        {"id": "61", "title": "Two-Minute Limit", "text": "Players shall not take more than two minutes to change sides.", "tags": ["sides", "timing"]}
+      ]
+    },
+    {
+      "id": "XI",
+      "number": 11,
+      "title": "Foul",
+      "description": "Definitions and consequences of fouls",
+      "rules": [
+        {"id": "62", "title": "Foul Categories", "text": "Any violation of Laws is broadly classified as: (a) Technical Foul, (b) Foul.", "tags": ["foul"]},
+        {"id": "63a", "title": "Technical Foul - Before Stroke", "text": "Violation by player BEFORE first stroke of his turn = Technical Foul. One C/m of offending player brought out for placing by opponent. Turn continues.", "tags": ["foul", "technical"]},
+        {"id": "63b", "title": "Technical Foul - Not Playing", "text": "Violation by player presently NOT having his turn = Technical Foul. Penalty per Rule 63(a).", "tags": ["foul", "technical"]},
+        {"id": "64a", "title": "Foul - During Turn", "text": "Violation DURING or AFTER first stroke of turn = Foul. One C/m brought out for placing. Turn lost.", "tags": ["foul"]},
+        {"id": "64b", "title": "Foul While Pocketing", "text": "If foul committed while pocketing C/m/Queen, the pocketed C/m/Queen brought out for placing. Turn lost.", "tags": ["foul"]}
+      ]
+    },
+    {
+      "id": "XII",
+      "number": 12,
+      "title": "C/m Overboard",
+      "description": "Rules when carrommen leave the playing surface",
+      "rules": [
+        {"id": "65a", "title": "Jumped C/m Placement", "text": "If C/m/Queen jumps out, Umpire places it in Centre Circle if space permits, covering it fully or maximum available portion.", "tags": ["overboard"]},
+        {"id": "65b", "title": "Queen + C/m Jump", "text": "If both Queen and C/m jump in same stroke, Queen placed first. Jumped C/m placed touching Queen, opposite direction of player having turn.", "tags": ["overboard", "queen"]},
+        {"id": "65c", "title": "Both Colors Jump", "text": "If both white and black C/m jump in same stroke, C/m of player who made stroke placed first. Other touching first, in manner of 65(b).", "tags": ["overboard"]},
+        {"id": "65d", "title": "Multiple C/m Jump", "text": "If more than 2 C/m jump in same stroke, first 2 placed per 65(b)/(c). Rest placed touching first 2, as far as possible.", "tags": ["overboard"]},
+        {"id": "66a", "title": "Fall Back on Surface", "text": "If C/m/Queen jumps and falls back on playing surface, Umpire places in Centre Circle. Position of disturbed C/m corrected by Umpire at his discretion.", "tags": ["overboard"]},
+        {"id": "66b", "title": "Light Fitting Hit", "text": "If C/m falls back after hitting shade/bulb/light fittings, considered to have naturally traveled. Disturbed C/m not rearranged.", "tags": ["overboard"]}
+      ]
+    },
+    {
+      "id": "XIII",
+      "number": 13,
+      "title": "C/m Rolling and Overlapping",
+      "description": "Rules for unusual carromman positions",
+      "rules": [
+        {"id": "67", "title": "Standing on Rim", "text": "If C/m/Queen stands on its rim, allowed to remain as is.", "tags": ["positioning"]},
+        {"id": "68", "title": "Overlapping C/m", "text": "If two C/m/Queen overlap each other, left undisturbed.", "tags": ["positioning"]},
+        {"id": "69a", "title": "Striker on C/m", "text": "If Striker rests on C/m/Queen, Umpire removes Striker without disturbance. If disturbed, original position restored as far as possible.", "tags": ["positioning"]},
+        {"id": "69b", "title": "Pocket Mouth Fall", "text": "If at pocket mouth and C/m loses center of gravity during Striker removal and falls, deemed pocketed.", "tags": ["positioning"]},
+        {"id": "70a", "title": "C/m on Striker", "text": "If C/m/Queen rests on Striker, Umpire lifts C/m, replaces them as far as possible in position they would rest if Striker absent.", "tags": ["positioning"]},
+        {"id": "70b", "title": "Striker Falls In", "text": "If at pocket mouth and Striker loses center of gravity during C/m removal and falls in, deemed pocketed. Penalty declared per Laws.", "tags": ["positioning"]},
+        {"id": "71", "title": "Precarious Pocket Fall", "text": "If C/m resting precariously at mouth of pocket falls in for any reason, considered properly pocketed.", "tags": ["positioning"]}
+      ]
+    },
+    {
+      "id": "XIV",
+      "number": 14,
+      "title": "Dues and/or Penalties",
+      "description": "Rules for penalty carrommen and Due C/m",
+      "rules": [
+        {"id": "72a", "title": "Striker Alone Pocketed", "text": "If proper/improper stroke pockets Striker alone, turn lost. One C/m taken out as penalty (Due) by opponent for placing.", "tags": ["due", "penalty"]},
+        {"id": "72b", "title": "Outstanding Due", "text": "If happens before any of his C/m pocketed, Due remains outstanding until C/m available.", "tags": ["due"]},
+        {"id": "73", "title": "Striker + Own C/m", "text": "If pockets Striker with own C/m: pocketed C/m + Due C/m taken out for placing. Turn continues.", "tags": ["due"]},
+        {"id": "74", "title": "Striker + Opponent C/m", "text": "If pockets Striker with opponent's C/m: opponent's C/m deemed pocketed. Due taken out for placing. Turn lost.", "tags": ["due"]},
+        {"id": "75", "title": "Striker + Both C/m", "text": "If pockets Striker with own and opponent's C/m: own C/m + Due taken out for placing by opponent. Turn continues.", "tags": ["due"]},
+        {"id": "76", "title": "Improper Opponent C/m", "text": "If pockets opponent's C/m by improper stroke: C/m deemed pocketed. Due taken out. Turn lost.", "tags": ["due", "foul"]},
+        {"id": "77a", "title": "Improper Own C/m", "text": "If pockets own C/m by improper stroke: C/m + Due taken out for placing. Turn lost.", "tags": ["due", "foul"]},
+        {"id": "77b", "title": "Improper Striker + Own", "text": "If pockets own C/m with Striker by improper stroke: C/m + Due taken out. Turn lost.", "tags": ["due", "foul"]},
+        {"id": "78a", "title": "Placing Time", "text": "Due/penalty C/m placed immediately after available, but only after stroke conclusion.", "tags": ["placing"]},
+        {"id": "78b-i", "title": "Doubles Due Placing", "text": "In Doubles, Due/penalty always placed by player sitting on right hand side of player having turn at time of availability.", "tags": ["placing", "doubles"]},
+        {"id": "78b-ii", "title": "Same Player Places", "text": "If during turn player pockets opponent's C/m and Due becomes available, the player himself takes out C/m for placing.", "tags": ["placing", "doubles"]},
+        {"id": "79a", "title": "No Space for Placing", "text": "If Due/penalty available but no space, player permitted to place immediately after space available.", "tags": ["placing"]},
+        {"id": "79b", "title": "Doubles Eligibility Pass", "text": "In Doubles, if eligibility passed to partner, only partner has right to take out and place C/m.", "tags": ["placing", "doubles"]},
+        {"id": "80", "title": "Forfeit Placing", "text": "If space available but player doesn't want to risk foul, loses chance to place. Claim forfeited.", "tags": ["placing"]},
+        {"id": "81", "title": "Mid-Turn Space", "text": "If space becomes available during turn of eligible player, placing made immediately.", "tags": ["placing"]},
+        {"id": "82a", "title": "Wrong C/m Placed", "text": "If player places own C/m by mistake, must be rectified if pointed out. Foul declared.", "tags": ["placing", "foul"]},
+        {"id": "82b", "title": "Unnoticed Wrong Placement", "text": "If not noticed before next stroke, C/m placed regarded as valid.", "tags": ["placing"]},
+        {"id": "83", "title": "Multiple Dues", "text": "If more than one Due/penalty C/m to be placed: available C/m placed immediately, rest as soon as available.", "tags": ["placing"]},
+        {"id": "84a", "title": "Placing Complete", "text": "Placing complete once finger removed from C/m, provided C/m placed inside Outer Circle.", "tags": ["placing"]},
+        {"id": "84b", "title": "No Other C/m", "text": "While placing Due/penalty, holding any other C/m or Striker not permitted.", "tags": ["placing"]},
+        {"id": "85", "title": "Placed Outside Circle", "text": "If player places/moves Due/penalty outside Outer Circle, asked to rectify. Foul declared.", "tags": ["placing", "foul"]},
+        {"id": "86", "title": "Disturbing Other C/m", "text": "While placing, must not move other C/m/Queen. If happens, replaced by Umpire. Foul declared.", "tags": ["placing", "foul"]},
+        {"id": "87", "title": "Forego Due", "text": "Player may forego Due/penalty in Toto only, not partially. Decide within 15 seconds or right forfeited.", "tags": ["placing"]},
+        {"id": "88", "title": "15-Second Placing", "text": "Time limit for placing Due/penalty is 15 seconds after Umpire's announcement.", "tags": ["placing", "timing"]},
+        {"id": "89a", "title": "No Set Off", "text": "Due/penalty C/m cannot be set off against each other.", "tags": ["placing"]},
+        {"id": "89b", "title": "Centre Circle Coverage", "text": "Due/penalty not placed covering Centre Circle wholly or partially. Must rectify. Foul declared.", "tags": ["placing", "foul"]},
+        {"id": "90", "title": "Doubles Partner Takeout", "text": "In Doubles, player shall not take out penalty/Due C/m for partner. Request Umpire if needed colour/number not available.", "tags": ["placing", "doubles"]},
+        {"id": "91", "title": "Getting Up", "text": "If player gets up during turn or opponent's turn for any reason, loses board with number of C/m/Queen on board. If opponent's score 22+, loses by C/m only.", "tags": ["foul"]}
+      ]
+    },
+    {
+      "id": "XV",
+      "number": 15,
+      "title": "Queen",
+      "description": "Comprehensive rules for the red Queen carromman",
+      "rules": [
+        {"id": "92", "title": "Right to Pocket Queen", "text": "Player has right to pocket Queen and cover it provided one of his own C/m already pocketed.", "tags": ["queen"]},
+        {"id": "93", "title": "Queen Placement", "text": "Queen placed by Umpire only in Centre Circle. If shot automatically formed during placement, cannot be altered.", "tags": ["queen"]},
+        {"id": "94", "title": "Centre Circle Covered", "text": "If Centre Circle partially/completely covered, Queen placed in most uncovered portion or adjacent position making it not easy to pocket. Umpire's placement final.", "tags": ["queen"]},
+        {"id": "95a", "title": "Queen Before First C/m", "text": "If Queen pocketed before any of player's C/m, Queen taken out for placing. Turn lost.", "tags": ["queen"]},
+        {"id": "95b", "title": "Queen with Due", "text": "If pockets Queen while Due against him, Queen taken out for placing. Turn lost.", "tags": ["queen", "due"]},
+        {"id": "95c", "title": "Recovery After Due", "text": "After recovery of Due/penalty, if all nine C/m on C/B, player has right to pocket Queen and cover it.", "tags": ["queen"]},
+        {"id": "95d", "title": "Queen + Striker at Break", "text": "At break or subsequent stroke when all nine C/m on C/B, if Queen pocketed with Striker: Queen taken out for placing, Due declared, turn lost.", "tags": ["queen", "break"]},
+        {"id": "96", "title": "Queen Not Covered", "text": "If Queen pocketed but not covered, taken out for placing. If unnoticed before next stroke, recorded as properly covered.", "tags": ["queen"]},
+        {"id": "97a", "title": "Queen + Own C/m", "text": "If Queen and own C/m pocketed together in one stroke, Queen considered covered.", "tags": ["queen"]},
+        {"id": "97b", "title": "Break with All 9 C/m", "text": "At break/subsequent stroke when all 9 C/m on board, if Queen + 1 C/m pocketed: Queen must be covered. If more than 1 C/m + Queen pocketed: Queen covered.", "tags": ["queen", "break"]},
+        {"id": "98a", "title": "Queen + C/m + Striker (Proper)", "text": "If Queen, C/m, Striker pocketed together by proper stroke: Queen + C/m + 1 additional Due taken out for placing. Turn continues.", "tags": ["queen", "due"]},
+        {"id": "98b", "title": "Queen + C/m + Striker (Improper)", "text": "If Queen, C/m, Striker pocketed by improper stroke: Queen + C/m + 2 additional Due taken out. Turn lost.", "tags": ["queen", "due", "foul"]},
+        {"id": "99a", "title": "Queen + Striker (Proper)", "text": "If Queen and Striker pocketed by proper stroke: Queen taken out by Umpire. 1 additional C/m taken out for placing. Turn continues.", "tags": ["queen", "due"]},
+        {"id": "99b", "title": "Queen + Striker (Improper)", "text": "If Queen and Striker pocketed by improper stroke: Queen taken out by Umpire. 2 additional C/m taken out for placing. Turn lost.", "tags": ["queen", "due", "foul"]},
+        {"id": "100a", "title": "Covering: Striker Alone", "text": "While covering Queen, if Striker alone pocketed: Queen taken out for placing. 1 C/m of offending player taken out as Due. Turn lost.", "tags": ["queen", "covering", "due"]},
+        {"id": "100b", "title": "Covering: Striker (Improper)", "text": "While covering Queen, if Striker alone pocketed by improper stroke: Queen taken out. 2 C/m taken out as Due. Turn lost.", "tags": ["queen", "covering", "due", "foul"]},
+        {"id": "101a", "title": "Covering: Striker + C/m", "text": "While covering Queen, if Striker + own C/m pocketed: C/m + 1 Due taken out for placing. Turn continues. If subsequent stroke fails to pocket C/m, Queen not considered covered, taken out for placing.", "tags": ["queen", "covering", "due"]},
+        {"id": "101b", "title": "Covering: Striker + C/m (Improper)", "text": "While covering Queen, if Striker + own C/m pocketed by improper stroke: C/m + 2 Due taken out. Turn lost.", "tags": ["queen", "covering", "due", "foul"]},
+        {"id": "102a", "title": "Covering: Last + Last (Proper)", "text": "While covering Queen, if pockets last own C/m + last opponent C/m: awarded 3 points. If score 22+, wins by 1 point.", "tags": ["queen", "covering", "scoring"]},
+        {"id": "102b", "title": "Covering: Last + Last (Improper)", "text": "While covering Queen, if pockets last own + last opponent C/m by improper stroke: opponent wins by 3 points. If score 22+, wins by 1 point. If demanded, additional point for improper stroke awarded opponent.", "tags": ["queen", "covering", "scoring", "foul"]},
+        {"id": "103a", "title": "Covering: Last Opponent Only", "text": "While covering Queen, if pockets last opponent C/m: loses board by number of own C/m + Queen value. If opponent score 22+, loses by C/m only.", "tags": ["queen", "covering", "scoring"]},
+        {"id": "103b", "title": "Covering: Last Opp (Improper)", "text": "While covering Queen, if pockets last opponent C/m by improper stroke: same as 103a. If demanded, additional point awarded opponent.", "tags": ["queen", "covering", "scoring", "foul"]},
+        {"id": "104a", "title": "Queen + Last + Last (Proper)", "text": "If pockets Queen with last own C/m and last opponent C/m by proper stroke: wins board by 3 points. If score 22+, wins by 1.", "tags": ["queen", "scoring"]},
+        {"id": "104b", "title": "Queen + Last + Last (Improper)", "text": "If pockets Queen with last own + last opponent by improper stroke: opponent wins by 3 points. If score 22+, loses by 1. If demanded, 1 additional point awarded.", "tags": ["queen", "scoring", "foul"]},
+        {"id": "105a", "title": "Last + Last with Queen on Board", "text": "If pockets last own + last opponent by proper stroke while Queen on C/B: opponent awarded 3 points. If score 22+, awarded 1 point.", "tags": ["queen", "scoring"]},
+        {"id": "105b", "title": "Last + Last (Improper) Queen on Board", "text": "Same as 105a but improper stroke: opponent awarded 3 points. If 22+, 1 point. If demanded, opponent awarded 1 additional point.", "tags": ["queen", "scoring", "foul"]},
+        {"id": "106a", "title": "Last Opp Only with Queen on Board", "text": "If pockets last opponent C/m by proper stroke when Queen still on C/B: loses board by number of own C/m + Queen value. If opponent 22+, loses by C/m only.", "tags": ["queen", "scoring"]},
+        {"id": "106b", "title": "Last Opp Only (Improper) Queen on Board", "text": "Same as 106a but improper: same loss. If demanded, opponent awarded 1 additional point.", "tags": ["queen", "scoring", "foul"]},
+        {"id": "107a", "title": "Last Own with Queen on Board", "text": "If pockets last own C/m by proper stroke leaving Queen on C/B: loses board by 3 points. If opponent 22+, loses by 1 point.", "tags": ["queen", "scoring"]},
+        {"id": "107b", "title": "Last Own (Improper) Queen on Board", "text": "Same as 107a but improper: 3 points loss. If 22+, 1 point. If demanded, opponent awarded 1 additional point.", "tags": ["queen", "scoring", "foul"]},
+        {"id": "108a", "title": "Last Own + Striker, Queen on Board", "text": "If pockets last own C/m with Striker leaving Queen by proper stroke: loses board by 3 points. If opponent 22+, loses by 1. If demanded, 1 additional for Striker.", "tags": ["queen", "scoring"]},
+        {"id": "108b", "title": "Last Own + Striker (Improper)", "text": "Same as 108a but improper: 3 points loss. If 22+, 1. If demanded, 2 additional points.", "tags": ["queen", "scoring", "foul"]},
+        {"id": "109a", "title": "Queen + Last + Last + Striker (Proper)", "text": "If pockets Queen + last own + last opponent + Striker by proper stroke: loses board by 3 points. If 22+, 1. If demanded, 1 additional for Striker.", "tags": ["queen", "scoring"]},
+        {"id": "109b", "title": "Queen + Last + Last + Striker (Improper)", "text": "Same as 109a but improper: 3 points loss. If 22+, 1. If demanded, 2 additional points.", "tags": ["queen", "scoring", "foul"]},
+        {"id": "110a", "title": "Last + Last + Striker (Queen Covered)", "text": "If pockets last own + last opponent with Striker by proper stroke: loses board by 1 point if Queen covered by him. If demanded, 1 additional for Striker.", "tags": ["queen", "scoring"]},
+        {"id": "110b", "title": "Last + Last + Striker (Improper, Queen Covered)", "text": "Same as 110a but improper: loses by 1 point if Queen covered. If demanded, 2 additional points.", "tags": ["queen", "scoring", "foul"]},
+        {"id": "111a", "title": "Last Opp + Striker, Queen on Board (Proper)", "text": "If pockets last opponent + Striker leaving Queen by proper stroke: loses by number of own C/m + Queen value. If 22+, by C/m only. If demanded, 1 additional for Striker.", "tags": ["queen", "scoring"]},
+        {"id": "111b", "title": "Last Opp + Striker (Improper)", "text": "Same as 111a but improper: same loss. If demanded, 2 additional points.", "tags": ["queen", "scoring", "foul"]},
+        {"id": "112a", "title": "Last + Last + Striker (Opp Covered Queen)", "text": "If pockets last own + last opponent with Striker by proper stroke: loses by 3 points if Queen covered by opponent. If demanded, 1 additional point.", "tags": ["queen", "scoring"]},
+        {"id": "112b", "title": "Last + Last + Striker (Improper, Opp Covered)", "text": "Same as 112a but improper: 3 points loss if Queen covered by opponent. If demanded, 2 additional points.", "tags": ["queen", "scoring", "foul"]},
+        {"id": "113", "title": "Queen Falls In", "text": "If Queen resting precariously at pocket mouth falls in for any reason, considered duly pocketed.", "tags": ["queen"]},
+        {"id": "114", "title": "Due for Queen Shot", "text": "Player shall not utilize Due/penalty C/m to make shot with Queen. If utilized, Umpire asks rectification. Foul declared.", "tags": ["queen", "foul"]}
+      ]
+    },
+    {
+      "id": "XVI",
+      "number": 16,
+      "title": "General",
+      "description": "Miscellaneous rules covering equipment use, timing, and conduct",
+      "rules": [
+        {"id": "115", "title": "Striker Source", "text": "Stroke taken by means of Striker only. Brought by player and certified by Chief Referee/Umpire before play.", "tags": ["general", "equipment"]},
+        {"id": "116", "title": "Striker Jump", "text": "If Striker jumps over C/B during stroke, turn continues if player pockets own C/m/Queen in that stroke.", "tags": ["general"]},
+        {"id": "117", "title": "Changed Striker", "text": "Changed new Striker, duly approved, allowed after particular board completed. If Striker breaks mid-board, change permitted only after current stroke completed.", "tags": ["general", "equipment"]},
+        {"id": "118a", "title": "C/B Position", "text": "Once set, position of C/B not changed in middle of match.", "tags": ["general"]},
+        {"id": "118b", "title": "Umpire Authority", "text": "Sole authority to make changes after examination, on appeal by player, lies with Umpire.", "tags": ["general"]},
+        {"id": "119", "title": "C/B Change", "text": "C/B, table, or stand can be changed only after completion of board. Sole authority for deciding condition rests with Umpire.", "tags": ["general"]},
+        {"id": "120", "title": "Broken C/m", "text": "Broken C/m, if appealed for replacement, replaced by Umpire in original position as far as possible.", "tags": ["general"]},
+        {"id": "121a", "title": "Time Stop on Appeal", "text": "Time count stops when appeal made to Umpire during play. Play not continues unless Umpire orders 'Play'.", "tags": ["general", "timing"]},
+        {"id": "121b", "title": "Violation Loss", "text": "Player who violates loses entire board with number of C/m on C/B + Queen points if on C/B.", "tags": ["general", "foul"]},
+        {"id": "122a", "title": "Powder Application", "text": "Powder applied evenly by player having turn over playing surface before break. Neither excessive nor scanty.", "tags": ["general"]},
+        {"id": "122b-i", "title": "Powder Timing", "text": "Powder not applied or removed after Umpire announces 'Play'.", "tags": ["general", "foul"]},
+        {"id": "122b-ii", "title": "Willful Removal", "text": "Any willful attempt to remove or wipe powder from playing surface not permitted.", "tags": ["general", "foul"]},
+        {"id": "122b-iii", "title": "Removal Methods", "text": "Removal of powder by blowing, wiping, or any other way not permitted.", "tags": ["general", "foul"]},
+        {"id": "122c", "title": "Base Lines Powder", "text": "Excessive powder along Base Lines/Circles of his side may be removed with Striker only, by player during turn.", "tags": ["general"]},
+        {"id": "122d", "title": "Umpire Powder Control", "text": "Umpire has right to control even application of powder on playing surface.", "tags": ["general"]},
+        {"id": "122e", "title": "Dust Removal Request", "text": "Umpires should be requested for removal of dust, insects, etc., from C/B during play.", "tags": ["general"]},
+        {"id": "123", "title": "Stroke Completion", "text": "Stroke considered complete only after Striker, C/m/Queen disturbed by Striker comes to rest. Striker removed by player immediately. Umpire may assist on request.", "tags": ["general"]},
+        {"id": "124a", "title": "Time Start (Pocketed)", "text": "When player pockets own C/m/Queen, time count starts as soon as stroke complete.", "tags": ["general", "timing"]},
+        {"id": "124b", "title": "Time Start (Failed)", "text": "When player fails to pocket, time count starts only after Striker removed from C/B.", "tags": ["general", "timing"]},
+        {"id": "125a", "title": "Opponent C/m Pocketed", "text": "When player pockets opponent's C/m knowingly or unknowingly, Umpire stops player from playing further.", "tags": ["general", "foul"]},
+        {"id": "125b", "title": "Unnoticed Opp C/m", "text": "If unnoticed by Umpire/opponent, C/m considered properly pocketed. Turn lost when noticed.", "tags": ["general"]},
+        {"id": "126a", "title": "Hit/Tap Board", "text": "Player shall not hit, tap, or disturb C/B willfully or otherwise. If done, foul declared.", "tags": ["general", "foul"]},
+        {"id": "126b", "title": "Major Disturbance", "text": "If done in way rearrangement becomes impossible, loses entire board with C/m + Queen points per Laws.", "tags": ["general", "foul"]},
+        {"id": "127a", "title": "Striker Slips", "text": "Stroke considered made if Striker slips, leaving any Base Line/Circle, regardless of touching C/m.", "tags": ["general"]},
+        {"id": "127b", "title": "Slip No Movement", "text": "If Striker slips and doesn't leave Base Line/Circle or move any C/m, stroke not considered made.", "tags": ["general"]},
+        {"id": "128", "title": "Score Inquiry", "text": "Player may find out score from Umpire only during his turn of play.", "tags": ["general"]},
+        {"id": "129", "title": "No Distraction", "text": "Player shall not distract attention of opponent by any act.", "tags": ["general", "foul"]},
+        {"id": "130a", "title": "Striker on Base Lines", "text": "While taking stroke, Striker must touch both Base Lines.", "tags": ["general"]},
+        {"id": "130b", "title": "Base Circle Stroke", "text": "If stroke from Base Circle, Striker must cover Base Circle fully but not touch arrow.", "tags": ["general"]},
+        {"id": "131", "title": "No Doubles Communication", "text": "In Doubles, partners not allowed to talk or communicate by gestures during board. Violation = Foul.", "tags": ["general", "doubles", "foul"]},
+        {"id": "132", "title": "No Spectator Talk", "text": "Players shall not talk to spectators during course of game without Umpire permission.", "tags": ["general"]},
+        {"id": "133", "title": "No Solid Material", "text": "Player shall not hold any solid material except Striker in either hand during turn.", "tags": ["general", "foul"]},
+        {"id": "134", "title": "C/m Disturbance After Break", "text": "C/m/Queen not moved or disturbed after break except by stroke. If touched/moved/disturbed, replaced by Umpire. Foul declared.", "tags": ["general", "foul"]},
+        {"id": "135", "title": "No Run Test", "text": "Run of Striker not tested on playing surface during course of board.", "tags": ["general", "foul"]},
+        {"id": "136a", "title": "Striker on Frame", "text": "Player shall not keep Striker on frame or in pocket of C/B during board.", "tags": ["general", "foul"]},
+        {"id": "136b", "title": "Striker Near Base", "text": "Player permitted to place Striker/C/m on playing surface, near his Base Line only, while placing Due/penalty C/m.", "tags": ["general"]},
+        {"id": "137", "title": "Three Pass", "text": "If players pass turn consecutively 3 times each, that board cancelled and replayed.", "tags": ["general"]},
+        {"id": "138", "title": "Game Interval", "text": "10 minutes interval between second and third game.", "tags": ["general", "timing"]},
+        {"id": "139", "title": "Concession", "text": "Player permitted to concede game/match at any stage.", "tags": ["general"]},
+        {"id": "140", "title": "Unforeseen Circumstances", "text": "If Umpire feels rearrangement of C/m not possible due to unforeseen circumstances, that board replayed.", "tags": ["general"]},
+        {"id": "141", "title": "Broken C/m Position", "text": "If C/m broken by stroke during board, position of bigger part considered for all purposes. Umpire's decision final.", "tags": ["general"]},
+        {"id": "142", "title": "C/m Blocking Striker", "text": "If C/m on Baseline/Circle prevents player from placing Striker, that board replayed.", "tags": ["general"]}
+      ]
+    },
+    {
+      "id": "XVII",
+      "number": 17,
+      "title": "Loss of Entire Match",
+      "description": "Acts that cause forfeiture of the entire match",
+      "rules": [
+        {"id": "143a", "title": "Leaves Match Area", "text": "Leaves match board area during game without Umpire permission.", "tags": ["loss"]},
+        {"id": "143b", "title": "Time Limit Failure", "text": "Fails to abide by time limit for rest in deciding game.", "tags": ["loss"]},
+        {"id": "143c", "title": "Refuses Decision", "text": "Refuses to abide by decision of Umpire/Chief Referee.", "tags": ["loss"]},
+        {"id": "143d", "title": "Insulting Remarks", "text": "Passes insulting remarks against Chief Referee/Umpire/authorities before, during, or after match.", "tags": ["loss"]},
+        {"id": "143e", "title": "Intoxication", "text": "Smokes or smells foul while at play due to intoxicating drinks, or under influence of drugs.", "tags": ["loss"]},
+        {"id": "143f", "title": "Uncertified Striker", "text": "Plays with an uncertified Striker.", "tags": ["loss", "equipment"]},
+        {"id": "143g", "title": "Discontinues Play", "text": "Discontinues play during course of match without Umpire permission.", "tags": ["loss"]},
+        {"id": "143h", "title": "Distraction Repeated", "text": "Disturbs and distracts attention of opponent more than twice despite Umpire's warning.", "tags": ["loss"]},
+        {"id": "143i", "title": "Late to Match", "text": "Fails to report to Umpire at match board within 15 minutes after match announced.", "tags": ["loss"]}
+      ]
+    },
+    {
+      "id": "XVIII",
+      "number": 18,
+      "title": "Protest",
+      "description": "Procedures for filing and resolving protests",
+      "rules": [
+        {"id": "144", "title": "Written Protest", "text": "All protests written in English addressed to Secretary of Tournament. Submitted through Chief Referee/Referee duly signed by player/Captain/Manager.", "tags": ["protest"]},
+        {"id": "145", "title": "Oral Protest", "text": "Oral protest intimated to Umpire immediately when incident occurs, with prescribed scrutiny fee. No protest entertained without payment.", "tags": ["protest"]},
+        {"id": "146", "title": "Protest Time Limit", "text": "Written protest submitted within 15 minutes of completion of that particular board.", "tags": ["protest", "timing"]},
+        {"id": "147", "title": "Protest Content", "text": "Protest represents facts only as occurred, decision of Chief Referee/Umpire, and point appealed against.", "tags": ["protest"]},
+        {"id": "148", "title": "Abusive Protest", "text": "Protest in uncouth and abusive language summarily rejected. Invites disciplinary action.", "tags": ["protest"]},
+        {"id": "149", "title": "No Withdrawal", "text": "Once protest lodged, not permitted to be withdrawn.", "tags": ["protest"]},
+        {"id": "150", "title": "Continue Play", "text": "Once protest recorded and handed over, play continues from where stopped. Result not announced until protest considered.", "tags": ["protest"]},
+        {"id": "151a", "title": "Protest Upheld", "text": "If protest upheld, match continues from beginning of that particular board where protest lodged. Scrutiny fee refunded.", "tags": ["protest"]},
+        {"id": "151b", "title": "Protest Overruled", "text": "If protest overruled, result already obtained stands. Scrutiny fee forfeited.", "tags": ["protest"]},
+        {"id": "151c", "title": "Decision Time", "text": "Decision of Tournament authorities conveyed to parties within one hour from time protest lodged.", "tags": ["protest", "timing"]}
+      ]
+    }
+  ]
+}
