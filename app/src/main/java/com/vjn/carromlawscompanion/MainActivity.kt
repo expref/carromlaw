@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -61,9 +62,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
@@ -71,6 +76,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.vjn.carromlawscompanion.ui.animation.RuleVisuals
 import com.vjn.carromlawscompanion.ui.animation.VisualFor
+import com.vjn.carromlawscompanion.ui.theme.CarromGold
 import com.vjn.carromlawscompanion.ui.theme.CarromLawsCompanionTheme
 import com.vjn.carromlawscompanion.ui.theme.CarromLineBlack
 import androidx.compose.foundation.rememberScrollState
@@ -311,7 +317,7 @@ fun HomeMenuCard(
                 modifier = Modifier.padding(end = 16.dp),
                 tint = MaterialTheme.colorScheme.primary
             )
-            Column {
+            Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = title,
                     style = MaterialTheme.typography.titleMedium,
@@ -323,6 +329,84 @@ fun HomeMenuCard(
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
+            Spacer(modifier = Modifier.size(12.dp))
+            CarromEmblem(size = 56.dp)
+        }
+    }
+}
+
+/**
+ * Small carrom-board emblem — gold ring, red Queen disc, four white pocket dots.
+ * Used as a decorative trailing accent on home menu cards so the empty space on
+ * landscape/tablet layouts carries the same visual identity as the launcher icon.
+ */
+@Composable
+fun CarromEmblem(modifier: Modifier = Modifier, size: Dp = 48.dp) {
+    val ringColor = CarromGold
+    val queenStart = Color(0xFFF55F5F)
+    val queenEnd = Color(0xFFB71C1C)
+    val rimColor = Color(0xFF5C0A0A)
+    val dotColor = Color(0xFFFFFFFF)
+
+    Canvas(modifier = modifier.size(size)) {
+        val s = this.size.minDimension
+        val cx = this.size.width / 2f
+        val cy = this.size.height / 2f
+        val outerR = s * 0.42f
+        val queenR = s * 0.24f
+
+        // Outer gold ring.
+        drawCircle(
+            color = ringColor.copy(alpha = 0.9f),
+            radius = outerR,
+            center = Offset(cx, cy),
+            style = Stroke(width = s * 0.055f)
+        )
+
+        // Soft inner white ring for depth.
+        drawCircle(
+            color = Color.White.copy(alpha = 0.32f),
+            radius = s * 0.34f,
+            center = Offset(cx, cy),
+            style = Stroke(width = s * 0.018f)
+        )
+
+        // Queen disc — radial gradient, off-centre highlight.
+        drawCircle(
+            brush = Brush.radialGradient(
+                colors = listOf(queenStart, queenEnd),
+                center = Offset(cx - s * 0.04f, cy - s * 0.04f),
+                radius = s * 0.32f
+            ),
+            radius = queenR,
+            center = Offset(cx, cy)
+        )
+
+        // Queen rim.
+        drawCircle(
+            color = rimColor.copy(alpha = 0.55f),
+            radius = queenR,
+            center = Offset(cx, cy),
+            style = Stroke(width = s * 0.02f)
+        )
+
+        // Tiny white highlight on the queen for a 3D feel.
+        drawCircle(
+            color = Color.White.copy(alpha = 0.4f),
+            radius = s * 0.05f,
+            center = Offset(cx - s * 0.07f, cy - s * 0.07f)
+        )
+
+        // Four pocket dots on the safe-zone diagonal corners.
+        val dotR = s * 0.025f
+        val dotOff = s * 0.30f
+        listOf(
+            Offset(cx - dotOff, cy - dotOff),
+            Offset(cx + dotOff, cy - dotOff),
+            Offset(cx - dotOff, cy + dotOff),
+            Offset(cx + dotOff, cy + dotOff)
+        ).forEach { c ->
+            drawCircle(color = dotColor.copy(alpha = 0.92f), radius = dotR, center = c)
         }
     }
 }
