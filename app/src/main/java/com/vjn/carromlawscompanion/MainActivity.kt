@@ -905,10 +905,13 @@ fun FoulCheckerScreen(
             )
             Spacer(modifier = Modifier.height(16.dp))
 
-            LazyColumn(
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+            LazyVerticalGrid(
+                columns = GridCells.Adaptive(minSize = 320.dp),
+                modifier = Modifier.weight(1f),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                items(categories) { category ->
+                gridItems(categories) { category ->
                     FoulCategoryCard(
                         category = category,
                         onClick = { onCategoryClick(category.id) }
