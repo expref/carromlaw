@@ -25,11 +25,44 @@ data class CarromPiece(
     val pocketed: Boolean = false
 )
 
+/**
+ * Optional emphasis layer drawn over the standard board. Each entry highlights one feature
+ * (or a free-form region) so a rule's visual can call attention to specific geometry without
+ * redrawing the whole board.
+ */
+sealed class BoardHighlight {
+    object PlayingSurface : BoardHighlight()
+    object Frame : BoardHighlight()
+    object Pockets : BoardHighlight()
+    object BaseLines : BoardHighlight()
+    object BaseCircles : BoardHighlight()
+    object Arrows : BoardHighlight()
+    object CentreCircle : BoardHighlight()
+    object OuterCircle : BoardHighlight()
+    object ImaginaryLines : BoardHighlight()
+
+    /** Highlight a single corner pocket (0=TL, 1=TR, 2=BL, 3=BR). */
+    data class Pocket(val corner: Int) : BoardHighlight()
+
+    /** Highlight one corner's base circle (0=TL, 1=TR, 2=BL, 3=BR). */
+    data class BaseCircle(val corner: Int) : BoardHighlight()
+
+    /** Highlight one side's pair of base lines (0=top, 1=bottom, 2=left, 3=right). */
+    data class BaseLineSide(val side: Int) : BoardHighlight()
+
+    /** Free-form circular emphasis at fractional coordinates of the playing surface. */
+    data class Circle(val cxFrac: Float, val cyFrac: Float, val radiusFrac: Float) : BoardHighlight()
+
+    /** Free-form rectangular emphasis at fractional coordinates of the playing surface. */
+    data class Rect(val xFrac: Float, val yFrac: Float, val wFrac: Float, val hFrac: Float) : BoardHighlight()
+}
+
 @Composable
 fun CarromBoardCanvas(
     pieces: List<CarromPiece>,
     modifier: Modifier = Modifier,
-    contentDescription: String = ""
+    contentDescription: String = "",
+    highlights: List<BoardHighlight> = emptyList()
 ) {
     val dark = isSystemInDarkTheme()
     val boardSurface = if (dark) Color(0xFF6B4A2B) else Color(0xFFE8C99B)
@@ -241,6 +274,122 @@ fun CarromBoardCanvas(
                 radius = r,
                 style = Stroke(width = lineStrokeThin)
             )
+        }
+
+        // ---- Highlights (drawn last so they sit above pieces and lines)
+        if (highlights.isNotEmpty()) {
+            val accent = Color(0xFFFFC107)
+            val accentSoft = accent.copy(alpha = 0.35f)
+            val emphasisStroke = boardSize * 0.008f
+            val emphasisHalo = boardSize * 0.014f
+
+            fun emphasiseCircle(cx: Float, cy: Float, r: Float) {
+                drawCircle(color = accentSoft, center = Offset(cx, cy), radius = r + emphasisHalo)
+                drawCircle(color = accent, center = Offset(cx, cy), radius = r + emphasisStroke / 2f, style = Stroke(width = emphasisStroke))
+            }
+
+            fun emphasiseRect(x: Float, y: Float, w: Float, h: Float) {
+                drawRect(color = accentSoft, topLeft = Offset(x - emphasisHalo, y - emphasisHalo), size = Size(w + emphasisHalo * 2, h + emphasisHalo * 2))
+                drawRect(color = accent, topLeft = Offset(x, y), size = Size(w, h), style = Stroke(width = emphasisStroke))
+            }
+
+            fun emphasiseLine(x1: Float, y1: Float, x2: Float, y2: Float) {
+                drawLine(color = accentSoft, start = Offset(x1, y1), end = Offset(x2, y2), strokeWidth = emphasisStroke * 2.5f)
+                drawLine(color = accent, start = Offset(x1, y1), end = Offset(x2, y2), strokeWidth = emphasisStroke)
+            }
+
+            val pocketCenters = listOf(
+                Offset(pocketInset, pocketInset),
+                Offset(size.width - pocketInset, pocketInset),
+                Offset(pocketInset, size.height - pocketInset),
+                Offset(size.width - pocketInset, size.height - pocketInset)
+            )
+
+            highlights.forEach { h ->
+                when (h) {
+                    BoardHighlight.PlayingSurface ->
+                        emphasiseRect(playOrigin.x, playOrigin.y, playSize, playSize)
+                    BoardHighlight.Frame -> {
+                        // Outline both edges of the wooden frame without overdrawing the surface.
+                        drawRect(color = accent, size = size, style = Stroke(width = emphasisStroke))
+                        drawRect(color = accent, topLeft = playOrigin, size = Size(playSize, playSize), style = Stroke(width = emphasisStroke))
+                    }
+                    BoardHighlight.Pockets ->
+                        pocketCenters.forEach { c -> emphasiseCircle(c.x, c.y, pocketRadius) }
+                    is BoardHighlight.Pocket ->
+                        pocketCenters.getOrNull(h.corner)?.let { emphasiseCircle(it.x, it.y, pocketRadius) }
+                    BoardHighlight.BaseLines -> {
+                        val sides = listOf(0, 1, 2, 3)
+                        sides.forEach { drawSideBaseLineEmphasis(it, baseLowerOffsetFrac, baseUpperOffsetFrac, baseLineHalfLengthFrac, ::fracToPx, ::fracToPy, ::emphasiseLine) }
+                    }
+                    is BoardHighlight.BaseLineSide ->
+                        drawSideBaseLineEmphasis(h.side, baseLowerOffsetFrac, baseUpperOffsetFrac, baseLineHalfLengthFrac, ::fracToPx, ::fracToPy, ::emphasiseLine)
+                    BoardHighlight.BaseCircles ->
+                        cornerCorners.forEach { c -> emphasiseCircle(c.x, c.y, baseCircleRadius) }
+                    is BoardHighlight.BaseCircle ->
+                        cornerCorners.getOrNull(h.corner)?.let { emphasiseCircle(it.x, it.y, baseCircleRadius) }
+                    BoardHighlight.Arrows -> {
+                        cornerCorners.forEachIndexed { i, baseCorner ->
+                            val pocketCorner = pocketCenters[i]
+                            val dx = pocketCorner.x - baseCorner.x
+                            val dy = pocketCorner.y - baseCorner.y
+                            val len = kotlin.math.sqrt(dx * dx + dy * dy)
+                            if (len > 0f) {
+                                val ux = dx / len; val uy = dy / len
+                                val tail = Offset(baseCorner.x + ux * baseCircleRadius * 1.4f, baseCorner.y + uy * baseCircleRadius * 1.4f)
+                                val head = Offset(pocketCorner.x - ux * pocketRadius * 1.25f, pocketCorner.y - uy * pocketRadius * 1.25f)
+                                emphasiseLine(tail.x, tail.y, head.x, head.y)
+                            }
+                        }
+                    }
+                    BoardHighlight.CentreCircle -> emphasiseCircle(centre.x, centre.y, centreCircleRadius)
+                    BoardHighlight.OuterCircle -> emphasiseCircle(centre.x, centre.y, outerCircleRadius)
+                    BoardHighlight.ImaginaryLines -> {
+                        // Diagonal lines extending arrow direction across the board.
+                        cornerCorners.forEachIndexed { i, baseCorner ->
+                            val opposite = cornerCorners[3 - i]
+                            emphasiseLine(baseCorner.x, baseCorner.y, opposite.x, opposite.y)
+                        }
+                    }
+                    is BoardHighlight.Circle ->
+                        emphasiseCircle(fracToPx(h.cxFrac), fracToPy(h.cyFrac), h.radiusFrac * playSize)
+                    is BoardHighlight.Rect ->
+                        emphasiseRect(fracToPx(h.xFrac), fracToPy(h.yFrac), h.wFrac * playSize, h.hFrac * playSize)
+                }
+            }
+        }
+    }
+}
+
+private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawSideBaseLineEmphasis(
+    side: Int,
+    lowerOffset: Float,
+    upperOffset: Float,
+    halfLength: Float,
+    fracToPx: (Float) -> Float,
+    fracToPy: (Float) -> Float,
+    emphasiseLine: (Float, Float, Float, Float) -> Unit
+) {
+    val xL = fracToPx(0.5f - halfLength)
+    val xR = fracToPx(0.5f + halfLength)
+    val yL = fracToPy(0.5f - halfLength)
+    val yR = fracToPy(0.5f + halfLength)
+    when (side) {
+        0 -> { // top
+            emphasiseLine(xL, fracToPy(lowerOffset), xR, fracToPy(lowerOffset))
+            emphasiseLine(xL, fracToPy(upperOffset), xR, fracToPy(upperOffset))
+        }
+        1 -> { // bottom
+            emphasiseLine(xL, fracToPy(1f - lowerOffset), xR, fracToPy(1f - lowerOffset))
+            emphasiseLine(xL, fracToPy(1f - upperOffset), xR, fracToPy(1f - upperOffset))
+        }
+        2 -> { // left
+            emphasiseLine(fracToPx(lowerOffset), yL, fracToPx(lowerOffset), yR)
+            emphasiseLine(fracToPx(upperOffset), yL, fracToPx(upperOffset), yR)
+        }
+        3 -> { // right
+            emphasiseLine(fracToPx(1f - lowerOffset), yL, fracToPx(1f - lowerOffset), yR)
+            emphasiseLine(fracToPx(1f - upperOffset), yL, fracToPx(1f - upperOffset), yR)
         }
     }
 }
