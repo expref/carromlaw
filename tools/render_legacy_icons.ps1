@@ -15,6 +15,20 @@ $densities = [ordered]@{
     'xxxhdpi' = 192
 }
 
+function Add-RoundedRectPath {
+    param(
+        [System.Drawing.Drawing2D.GraphicsPath]$Path,
+        [single]$X, [single]$Y, [single]$W, [single]$H, [single]$R
+    )
+    $d = 2 * $R
+    # AddArc(x, y, w, h, startAngle, sweepAngle) — angles are clockwise from 3 o'clock.
+    $Path.AddArc($X + $W - $d, $Y,                $d, $d, 270, 90) | Out-Null  # top-right
+    $Path.AddArc($X + $W - $d, $Y + $H - $d,      $d, $d,   0, 90) | Out-Null  # bottom-right
+    $Path.AddArc($X,           $Y + $H - $d,      $d, $d,  90, 90) | Out-Null  # bottom-left
+    $Path.AddArc($X,           $Y,                $d, $d, 180, 90) | Out-Null  # top-left
+    $Path.CloseFigure()
+}
+
 function Render-LauncherIcon {
     param(
         [int]$Size,
@@ -27,7 +41,6 @@ function Render-LauncherIcon {
     $g.PixelOffsetMode = [System.Drawing.Drawing2D.PixelOffsetMode]::HighQuality
     $g.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
 
-    # Map the 108-unit vector viewport onto the target bitmap.
     $g.ScaleTransform(($Size / 108.0), ($Size / 108.0))
 
     if ($Round) {
@@ -37,9 +50,10 @@ function Render-LauncherIcon {
         $clip.Dispose()
     }
 
-    # Background layer 1: linear gradient #0D3B66 -> #1F4E79 across the diagonal.
-    $bgStart = [System.Drawing.Color]::FromArgb(255, 0x0D, 0x3B, 0x66)
-    $bgEnd   = [System.Drawing.Color]::FromArgb(255, 0x1F, 0x4E, 0x79)
+    # ----- Background -----
+    # Linear wood gradient: caramel #C8965C -> walnut #5C3317 across the diagonal.
+    $bgStart = [System.Drawing.Color]::FromArgb(255, 0xC8, 0x96, 0x5C)
+    $bgEnd   = [System.Drawing.Color]::FromArgb(255, 0x5C, 0x33, 0x17)
     $linBrush = New-Object System.Drawing.Drawing2D.LinearGradientBrush(
         (New-Object System.Drawing.PointF 0, 0),
         (New-Object System.Drawing.PointF 108, 108),
@@ -47,42 +61,81 @@ function Render-LauncherIcon {
     $g.FillRectangle($linBrush, (New-Object System.Drawing.RectangleF 0, 0, 108, 108))
     $linBrush.Dispose()
 
-    # Background layer 2: radial glow at (54,54) r=48, alpha-fading to transparent.
+    # Warm radial highlight at (54,54) r=50, alpha-fading to transparent.
     $glowPath = New-Object System.Drawing.Drawing2D.GraphicsPath
-    $glowPath.AddEllipse(6, 6, 96, 96)
+    $glowPath.AddEllipse(4, 4, 100, 100)
     $glowBrush = New-Object System.Drawing.Drawing2D.PathGradientBrush $glowPath
     $glowBrush.CenterPoint = New-Object System.Drawing.PointF 54, 54
-    $glowBrush.CenterColor = [System.Drawing.Color]::FromArgb(0x33, 0x2C, 0x5C, 0x8C)
-    $glowBrush.SurroundColors = @([System.Drawing.Color]::FromArgb(0x00, 0x0D, 0x3B, 0x66))
+    $glowBrush.CenterColor = [System.Drawing.Color]::FromArgb(0x44, 0xE5, 0xC1, 0x8A)
+    $glowBrush.SurroundColors = @([System.Drawing.Color]::FromArgb(0x00, 0xC8, 0x96, 0x5C))
     $g.FillPath($glowBrush, $glowPath)
     $glowBrush.Dispose()
     $glowPath.Dispose()
 
-    # Outer gold ring r=28, stroke 1.6, #FFD54F a=0.85.
-    $goldPen = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(217, 0xFF, 0xD5, 0x4F)), 1.6
-    $g.DrawEllipse($goldPen, 26, 26, 56, 56)
-    $goldPen.Dispose()
+    # ----- Book body (rounded rect, x:26-82, y:22-86, r=4) -----
+    $bookPath = New-Object System.Drawing.Drawing2D.GraphicsPath
+    Add-RoundedRectPath -Path $bookPath -X 26 -Y 22 -W 56 -H 64 -R 4
 
-    # Inner soft white ring r=22, stroke 0.8, #FFFFFF a=0.40.
-    $whitePen = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(102, 0xFF, 0xFF, 0xFF)), 0.8
-    $g.DrawEllipse($whitePen, 32, 32, 44, 44)
-    $whitePen.Dispose()
+    $bookBrush = New-Object System.Drawing.Drawing2D.LinearGradientBrush(
+        (New-Object System.Drawing.PointF 26, 22),
+        (New-Object System.Drawing.PointF 82, 86),
+        [System.Drawing.Color]::FromArgb(255, 0x5A, 0x38, 0x23),
+        [System.Drawing.Color]::FromArgb(255, 0x3A, 0x20, 0x14))
+    $g.FillPath($bookBrush, $bookPath)
+    $bookBrush.Dispose()
 
-    # Queen disc r=15 at (54,54). The radial gradient is anchored at (50,50) r=18,
-    # so we paint a solid base in the surround colour first, then clip to the disc
-    # and overlay the gradient. This gives the asymmetric highlight without leaving
-    # uncovered pixels where the disc extends past the gradient path.
+    # ----- Spine band (left 5 units of the book, sharing the rounded left corners) -----
+    # Constructed as a closed path manually, since only the two left corners are rounded.
+    $spinePath = New-Object System.Drawing.Drawing2D.GraphicsPath
+    $spinePath.AddLine([single]31, [single]22, [single]31, [single]86)
+    $spinePath.AddLine([single]31, [single]86, [single]30, [single]86)
+    $spinePath.AddArc([single]26, [single]82, [single]8, [single]8, 90, 90)   # bottom-left
+    $spinePath.AddLine([single]26, [single]82, [single]26, [single]26)
+    $spinePath.AddArc([single]26, [single]22, [single]8, [single]8, 180, 90)  # top-left
+    $spinePath.CloseFigure()
+
+    $spineBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(255, 0x2D, 0x18, 0x10))
+    $g.FillPath($spineBrush, $spinePath)
+    $spineBrush.Dispose()
+    $spinePath.Dispose()
+
+    # Spine highlight line at x=31.
+    $spineHlPen = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(140, 0x6A, 0x42, 0x26)), 0.4
+    $g.DrawLine($spineHlPen, [single]31, [single]24, [single]31, [single]84)
+    $spineHlPen.Dispose()
+
+    # ----- Inner cover border (rounded rect outline, gold) -----
+    $borderPath = New-Object System.Drawing.Drawing2D.GraphicsPath
+    Add-RoundedRectPath -Path $borderPath -X 32 -Y 28 -W 44 -H 52 -R 2
+    $borderPen = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(191, 0xD4, 0xAF, 0x37)), 0.6
+    $g.DrawPath($borderPen, $borderPath)
+    $borderPen.Dispose()
+    $borderPath.Dispose()
+
+    # ----- Carrom emblem -----
+    # Outer gold ring at (54,48) r=12.
+    $emblemPen = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(230, 0xD4, 0xAF, 0x37)), 1.4
+    $g.DrawEllipse($emblemPen, 42, 36, 24, 24)
+    $emblemPen.Dispose()
+
+    # Soft inner ring at r=10.
+    $innerRingPen = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(89, 0xFF, 0xFF, 0xFF)), 0.4
+    $g.DrawEllipse($innerRingPen, 44, 38, 20, 20)
+    $innerRingPen.Dispose()
+
+    # Queen disc base at (54,48) r=7.
     $discPath = New-Object System.Drawing.Drawing2D.GraphicsPath
-    $discPath.AddEllipse(39, 39, 30, 30)
+    $discPath.AddEllipse(47, 41, 14, 14)
 
     $baseBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(255, 0xB7, 0x1C, 0x1C))
     $g.FillPath($baseBrush, $discPath)
     $baseBrush.Dispose()
 
+    # Queen radial gradient overlay anchored at (52,46) r=9.
     $gradPath = New-Object System.Drawing.Drawing2D.GraphicsPath
-    $gradPath.AddEllipse(32, 32, 36, 36)
+    $gradPath.AddEllipse(43, 37, 18, 18)
     $queenBrush = New-Object System.Drawing.Drawing2D.PathGradientBrush $gradPath
-    $queenBrush.CenterPoint = New-Object System.Drawing.PointF 50, 50
+    $queenBrush.CenterPoint = New-Object System.Drawing.PointF 52, 46
     $queenBrush.CenterColor = [System.Drawing.Color]::FromArgb(255, 0xF5, 0x5F, 0x5F)
     $queenBrush.SurroundColors = @([System.Drawing.Color]::FromArgb(255, 0xB7, 0x1C, 0x1C))
 
@@ -95,24 +148,34 @@ function Render-LauncherIcon {
     $queenBrush.Dispose()
     $gradPath.Dispose()
 
-    # Queen highlight: white disc r=4 at (50,50) a=0.35.
-    $hlBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(89, 0xFF, 0xFF, 0xFF))
-    $g.FillEllipse($hlBrush, 46, 46, 8, 8)
-    $hlBrush.Dispose()
-
-    # Queen rim: dark red ring on the disc edge, stroke 0.8, #7F0000 a=0.55.
-    $rimPen = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(140, 0x7F, 0x00, 0x00)), 0.8
-    $g.DrawEllipse($rimPen, 39, 39, 30, 30)
+    # Queen rim ring.
+    $rimPen = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(140, 0x5C, 0x0A, 0x0A)), 0.4
+    $g.DrawEllipse($rimPen, 47, 41, 14, 14)
     $rimPen.Dispose()
     $discPath.Dispose()
 
-    # Four pocket dots r=3 at (37,37), (71,37), (37,71), (71,71), white a=0.92.
-    $dotBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(235, 0xFF, 0xFF, 0xFF))
-    foreach ($pt in @(@(37, 37), @(71, 37), @(37, 71), @(71, 71))) {
-        $g.FillEllipse($dotBrush, ($pt[0] - 3), ($pt[1] - 3), 6, 6)
-    }
-    $dotBrush.Dispose()
+    # Queen highlight blob at (52,46) r=1.8.
+    $hlBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(102, 0xFF, 0xFF, 0xFF))
+    $g.FillEllipse($hlBrush, 50.2, 44.2, 3.6, 3.6)
+    $hlBrush.Dispose()
 
+    # ----- Embossed title bar (two short gold lines) -----
+    $titlePen1 = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(153, 0xD4, 0xAF, 0x37)), 0.6
+    $g.DrawLine($titlePen1, [single]42, [single]68, [single]66, [single]68)
+    $titlePen1.Dispose()
+
+    $titlePen2 = New-Object System.Drawing.Pen ([System.Drawing.Color]::FromArgb(140, 0xD4, 0xAF, 0x37)), 0.5
+    $g.DrawLine($titlePen2, [single]42, [single]72, [single]66, [single]72)
+    $titlePen2.Dispose()
+
+    # ----- Corner-tick markers (four small gold dots) -----
+    $tickBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(217, 0xD4, 0xAF, 0x37))
+    foreach ($pt in @(@(35, 31), @(73, 31), @(35, 77), @(73, 77))) {
+        $g.FillEllipse($tickBrush, ($pt[0] - 0.9), ($pt[1] - 0.9), 1.8, 1.8)
+    }
+    $tickBrush.Dispose()
+
+    $bookPath.Dispose()
     $g.Dispose()
     return $bmp
 }
