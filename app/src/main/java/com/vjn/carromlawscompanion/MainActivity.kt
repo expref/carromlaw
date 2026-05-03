@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -69,6 +70,7 @@ import androidx.navigation.compose.rememberNavController
 import com.vjn.carromlawscompanion.ui.animation.RuleVisuals
 import com.vjn.carromlawscompanion.ui.animation.VisualFor
 import com.vjn.carromlawscompanion.ui.theme.CarromLawsCompanionTheme
+import com.vjn.carromlawscompanion.ui.theme.CarromLineBlack
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.filled.Share
@@ -331,6 +333,7 @@ fun RulesListScreen(
     val sections = remember { repository.getSections() }
 
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.primary,
         topBar = {
             TopAppBar(
                 title = { Text("Browse Rules") },
@@ -343,8 +346,9 @@ fun RulesListScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
                 )
             )
         }
@@ -371,7 +375,11 @@ fun SectionCard(section: Section, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable { onClick() },
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.background
+        ),
+        border = BorderStroke(0.7.dp, CarromLineBlack.copy(alpha = 0.6f))
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
@@ -408,6 +416,7 @@ fun SectionDetailScreen(
     }
 
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.primary,
         topBar = {
             TopAppBar(
                 title = {
@@ -425,8 +434,9 @@ fun SectionDetailScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
                 )
             )
         }
@@ -462,7 +472,13 @@ fun RuleCard(rule: Rule, bookmarkManager: BookmarkManager) {
     val context = LocalContext.current
     val hasVisual = RuleVisuals.hasVisualFor(rule.id)
 
-    Card(modifier = Modifier.fillMaxWidth()) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.background
+        ),
+        border = BorderStroke(0.7.dp, CarromLineBlack.copy(alpha = 0.6f))
+    ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Row(
                 modifier = Modifier.fillMaxWidth(),

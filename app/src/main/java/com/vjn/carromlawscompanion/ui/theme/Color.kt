@@ -14,6 +14,7 @@ val CarromBoardTan = Color(0xFFEDD3A7)      // Playing-surface tan — backgroun
 val CarromQueenRed = Color(0xFFA82828)      // Painted carrom red — tertiary / error
 val CarromDarkBrown = Color(0xFF2D1810)     // Spine dark — on-primary / on-surface text
 val CarromGold = Color(0xFFC9971F)          // Painted gold — secondary
+val CarromLineBlack = Color(0xFF1A1A1A)     // Painted guide-line black — borders
 
 // Dark theme
 val CarromBrownDark = Color(0xFFD4A574)     // Light wood — primary in dark
