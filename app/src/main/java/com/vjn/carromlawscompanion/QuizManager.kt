@@ -70,7 +70,7 @@ class QuizManager(
 
         val questionPool = mutableListOf<QuizQuestion>()
 
-        // Type 1: "Which section does this rule belong to?"
+        // "Which section does this rule belong to?"
         goodRules.forEach { ruleWithSection ->
             val correctSection = ruleWithSection.section
             val wrongSections = sections.filter { it.id != correctSection.id }.shuffled().take(3)
@@ -87,29 +87,7 @@ class QuizManager(
             )
         }
 
-        // Type 2: "What is rule X about?"
-        goodRules.forEach { ruleWithSection ->
-            val correctRule = ruleWithSection.rule
-            val wrongRules = goodRules
-                .filter { it.rule.id != correctRule.id }
-                .shuffled()
-                .take(3)
-                .map { it.rule }
-
-            val options = (listOf(correctRule) + wrongRules).shuffled()
-
-            questionPool.add(
-                QuizQuestion(
-                    questionText = "Which of these is the title of Rule ${correctRule.id}?",
-                    options = options.map { it.title },
-                    correctAnswerIndex = options.indexOf(correctRule),
-                    explanation = "Rule ${correctRule.id} is titled \"${correctRule.title}\". ${correctRule.text.take(150)}${if (correctRule.text.length > 150) "..." else ""}".expandAbbreviations(),
-                    ruleRef = correctRule.id
-                )
-            )
-        }
-
-        // Type 3: Foul category questions
+        // Foul category questions
         try {
             val foulCategories = repository.getFoulCategories()
             foulCategories.forEach { category ->
