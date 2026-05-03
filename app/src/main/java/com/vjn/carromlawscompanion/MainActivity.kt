@@ -31,6 +31,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.Help
 import androidx.compose.material.icons.filled.MenuBook
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Quiz
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
@@ -65,6 +66,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.vjn.carromlawscompanion.ui.animation.RuleVisuals
+import com.vjn.carromlawscompanion.ui.animation.VisualFor
 import com.vjn.carromlawscompanion.ui.theme.CarromLawsCompanionTheme
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -455,7 +458,9 @@ fun SectionDetailScreen(
 @Composable
 fun RuleCard(rule: Rule, bookmarkManager: BookmarkManager) {
     var isBookmarked by remember { mutableStateOf(bookmarkManager.isBookmarked(rule.id)) }
+    var showDemo by remember(rule.id) { mutableStateOf(false) }
     val context = LocalContext.current
+    val hasVisual = RuleVisuals.hasVisualFor(rule.id)
 
     Card(modifier = Modifier.fillMaxWidth()) {
         Column(modifier = Modifier.padding(16.dp)) {
@@ -498,6 +503,24 @@ fun RuleCard(rule: Rule, bookmarkManager: BookmarkManager) {
                 text = rule.text.expandAbbreviations(),
                 style = MaterialTheme.typography.bodyMedium
             )
+            if (hasVisual) {
+                Spacer(modifier = Modifier.height(12.dp))
+                OutlinedButton(
+                    onClick = { showDemo = !showDemo },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Icon(
+                        imageVector = if (showDemo) Icons.Filled.Close else Icons.Filled.PlayArrow,
+                        contentDescription = null
+                    )
+                    Spacer(modifier = Modifier.size(8.dp))
+                    Text(if (showDemo) "Hide demo" else "Watch demo")
+                }
+                if (showDemo) {
+                    Spacer(modifier = Modifier.height(12.dp))
+                    VisualFor(rule.id)
+                }
+            }
         }
     }
 }
