@@ -5,7 +5,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -78,8 +77,9 @@ fun CarromBoardCanvas(
     val whitePiece = Color(0xFFFFF8E1)
     val blackPiece = Color(0xFF1C1C1C)
     val queenPiece = Color(0xFFD32F2F)
-    val strikerPiece = MaterialTheme.colorScheme.tertiary
+    val strikerPiece = Color(0xFF00897B) // teal — distinct from white/black pieces, queen red, and highlight amber
     val pieceStroke = Color(0xFF1A0E07).copy(alpha = 0.6f)
+    val frameMaskColor = Color(0xFF2D1A0E) // dark espresso to match the photographed frame
 
     Box(
         modifier = modifier
@@ -115,6 +115,20 @@ fun CarromBoardCanvas(
 
             fun fracToPx(f: Float): Float = playOrigin.x + f * playSize
             fun fracToPy(f: Float): Float = playOrigin.y + f * playSize
+
+            // ---- Mask branding on the wooden frame.
+            // Top: "Geologic" + logo strip, ~middle 40% of the top frame.
+            // Bottom: "Carrom 720" strip, ~middle 26% of the bottom frame.
+            drawRect(
+                color = frameMaskColor,
+                topLeft = Offset(size.width * 0.30f, size.height * 0.005f),
+                size = Size(size.width * 0.40f, size.height * 0.070f)
+            )
+            drawRect(
+                color = frameMaskColor,
+                topLeft = Offset(size.width * 0.37f, size.height * 0.925f),
+                size = Size(size.width * 0.26f, size.height * 0.070f)
+            )
 
             val baseCircleRadius = playSize * 0.0215f
             val cornerCorners = listOf(
