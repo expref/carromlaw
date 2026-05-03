@@ -755,7 +755,6 @@ fun SearchScreen(
     }
 
     Scaffold(
-        containerColor = MaterialTheme.colorScheme.primary,
         topBar = {
             TopAppBar(
                 title = { Text("Search Rules") },
@@ -768,9 +767,8 @@ fun SearchScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             )
         }
@@ -805,7 +803,7 @@ fun SearchScreen(
                 Text(
                     text = "Found ${searchResults.size} matching rules",
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onPrimary
+                    color = MaterialTheme.colorScheme.primary
                 )
                 Spacer(modifier = Modifier.height(8.dp))
             }
@@ -833,11 +831,7 @@ fun SearchResultCard(result: SearchResult, onClick: () -> Unit, searchQuery: Str
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() },
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.background
-        ),
-        border = BorderStroke(0.7.dp, CarromLineBlack.copy(alpha = 0.6f))
+            .clickable { onClick() }
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
@@ -1270,7 +1264,6 @@ fun BookmarksScreen(
     }
 
     Scaffold(
-        containerColor = MaterialTheme.colorScheme.primary,
         topBar = {
             TopAppBar(
                 title = { Text("Bookmarks") },
@@ -1283,9 +1276,8 @@ fun BookmarksScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             )
         }
@@ -1303,19 +1295,17 @@ fun BookmarksScreen(
                     imageVector = Icons.Filled.BookmarkBorder,
                     contentDescription = null,
                     modifier = Modifier.padding(16.dp),
-                    tint = MaterialTheme.colorScheme.onPrimary
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 Text(
                     text = "No bookmarks yet",
                     style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onPrimary
+                    fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = "Tap the bookmark icon on any rule to save it for quick access",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onPrimary
+                    style = MaterialTheme.typography.bodyMedium
                 )
             }
         } else {
@@ -1349,11 +1339,7 @@ fun BookmarkRuleCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() },
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.background
-        ),
-        border = BorderStroke(0.7.dp, CarromLineBlack.copy(alpha = 0.6f))
+            .clickable { onClick() }
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Row(
@@ -1406,7 +1392,6 @@ fun QuizScreen(
     var quizState by remember { mutableStateOf<QuizState>(QuizState.NotStarted) }
 
     Scaffold(
-        containerColor = MaterialTheme.colorScheme.primary,
         topBar = {
             TopAppBar(
                 title = { Text("Quiz Mode") },
@@ -1419,9 +1404,8 @@ fun QuizScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             )
         }
@@ -1646,13 +1630,7 @@ fun QuizQuestionScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         // Question
-        Card(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.background
-        ),
-        border = BorderStroke(0.7.dp, CarromLineBlack.copy(alpha = 0.6f))
-    ) {
+        Card(modifier = Modifier.fillMaxWidth()) {
             Text(
                 text = question.questionText.expandAbbreviations(),
                 style = MaterialTheme.typography.titleMedium,
@@ -1890,7 +1868,6 @@ fun SettingsScreen(
     val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
-        containerColor = MaterialTheme.colorScheme.primary,
         topBar = {
             TopAppBar(
                 title = { Text("Settings") },
@@ -1903,9 +1880,8 @@ fun SettingsScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             )
         },
@@ -1921,14 +1897,13 @@ fun SettingsScreen(
             Text(
                 text = "Font Size",
                 style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onPrimary
+                fontWeight = FontWeight.Bold
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = "Adjusts text size throughout the app",
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onPrimary
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Spacer(modifier = Modifier.height(16.dp))
 
