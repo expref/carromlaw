@@ -27,19 +27,35 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Block
+import androidx.compose.material.icons.filled.Bolt
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.BookmarkBorder
+import androidx.compose.material.icons.filled.Brightness1
+import androidx.compose.material.icons.filled.Cached
+import androidx.compose.material.icons.filled.Campaign
+import androidx.compose.material.icons.filled.Casino
+import androidx.compose.material.icons.filled.Chair
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.EmojiEvents
+import androidx.compose.material.icons.filled.Gavel
+import androidx.compose.material.icons.filled.GridOn
 import androidx.compose.material.icons.filled.Help
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Layers
 import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Quiz
+import androidx.compose.material.icons.filled.Replay
+import androidx.compose.material.icons.filled.Scoreboard
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.SwapHoriz
+import androidx.compose.material.icons.filled.TouchApp
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -67,6 +83,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
@@ -463,6 +480,7 @@ fun RulesListScreen(
 
 @Composable
 fun SectionCard(section: Section, onClick: () -> Unit) {
+    val (icon, iconTint) = sectionVisual(section.id)
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -472,24 +490,69 @@ fun SectionCard(section: Section, onClick: () -> Unit) {
         ),
         border = BorderStroke(0.7.dp, CarromLineBlack.copy(alpha = 0.6f))
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(
-                text = "${section.id}. ${section.title}",
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(
-                text = section.description.expandAbbreviations(),
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(
-                text = "${section.rules.size} rules",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.primary
+        Row(
+            modifier = Modifier.padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = "${section.id}. ${section.title}",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = section.description.expandAbbreviations(),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "${section.rules.size} rules",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.primary
+                )
+            }
+            Spacer(modifier = Modifier.size(12.dp))
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                modifier = Modifier.size(48.dp),
+                tint = iconTint
             )
         }
+    }
+}
+
+/**
+ * Picks an icon and tint that fit each section's topic, so cards show a relevant
+ * trailing glyph instead of just text-on-blank. Tints: primary (rosewood) for
+ * neutral topics, tertiary (queen red) for foul / penalty / loss / queen,
+ * CarromGold for the "moment" sections (toss, break, score).
+ */
+@Composable
+private fun sectionVisual(sectionId: String): Pair<ImageVector, Color> {
+    val primary = MaterialTheme.colorScheme.primary
+    val accent = MaterialTheme.colorScheme.tertiary
+    return when (sectionId) {
+        "I" -> Icons.Filled.GridOn to primary                 // Standard Equipment
+        "II" -> Icons.Filled.MenuBook to primary              // Interpretations
+        "III" -> Icons.Filled.Chair to primary                // Sitting Position
+        "IV" -> Icons.Filled.TouchApp to primary              // How to Strike
+        "V" -> Icons.Filled.Casino to CarromGold              // Toss
+        "VI" -> Icons.Filled.Replay to primary                // Trial Board
+        "VII" -> Icons.Filled.Bolt to CarromGold              // Break
+        "VIII" -> Icons.Filled.Cached to primary              // Turn of Play
+        "IX" -> Icons.Filled.Scoreboard to CarromGold         // How to Score
+        "X" -> Icons.Filled.SwapHoriz to primary              // Change of Sides
+        "XI" -> Icons.Filled.Warning to accent                // Foul
+        "XII" -> Icons.AutoMirrored.Filled.Logout to primary  // C/m Overboard
+        "XIII" -> Icons.Filled.Layers to primary              // Rolling and Overlapping
+        "XIV" -> Icons.Filled.Gavel to accent                 // Dues and Penalties
+        "XV" -> Icons.Filled.Brightness1 to accent            // Queen — solid red disc
+        "XVI" -> Icons.Filled.Info to primary                 // General
+        "XVII" -> Icons.Filled.Block to accent                // Loss of Entire Match
+        "XVIII" -> Icons.Filled.Campaign to primary           // Protest
+        else -> Icons.Filled.Info to primary
     }
 }
 
