@@ -103,7 +103,6 @@ import com.vjn.carromlawscompanion.ui.animation.RuleVisuals
 import com.vjn.carromlawscompanion.ui.animation.VisualFor
 import androidx.compose.ui.graphics.Brush
 import com.vjn.carromlawscompanion.ui.theme.CarromGold
-import com.vjn.carromlawscompanion.ui.theme.CarromQueenRed
 import com.vjn.carromlawscompanion.ui.theme.CarromLawsCompanionTheme
 import com.vjn.carromlawscompanion.ui.theme.CarromLineBlack
 import androidx.compose.foundation.rememberScrollState
@@ -240,30 +239,26 @@ fun HomeScreen(
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Box(
                             modifier = Modifier
-                                .size(28.dp)
-                                .background(CarromQueenRed, CircleShape)
-                                .border(2.dp, CarromGold, CircleShape)
+                                .size(32.dp)
+                                .background(MaterialTheme.colorScheme.tertiary, CircleShape)
+                                .border(2.5.dp, MaterialTheme.colorScheme.secondary, CircleShape)
                         )
                         Spacer(modifier = Modifier.size(12.dp))
-                        Column {
-                            Text(
-                                text = "LAWS OF CARROM",
-                                style = MaterialTheme.typography.titleLarge.copy(
-                                    brush = Brush.linearGradient(
-                                        colors = listOf(CarromGold, CarromQueenRed, CarromGold)
+                        Text(
+                            text = "LAWS OF CARROM",
+                            style = MaterialTheme.typography.headlineSmall.copy(
+                                brush = Brush.linearGradient(
+                                    colors = listOf(
+                                        MaterialTheme.colorScheme.onPrimaryContainer,
+                                        MaterialTheme.colorScheme.tertiary,
+                                        MaterialTheme.colorScheme.onPrimaryContainer
                                     )
-                                ),
-                                fontWeight = FontWeight.ExtraBold,
-                                fontSize = 22.sp,
-                                letterSpacing = 2.sp
-                            )
-                            Text(
-                                text = "Official ICF Companion",
-                                style = MaterialTheme.typography.labelSmall,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f),
-                                letterSpacing = 1.5.sp
-                            )
-                        }
+                                )
+                            ),
+                            fontWeight = FontWeight.ExtraBold,
+                            fontSize = 26.sp,
+                            letterSpacing = 1.5.sp
+                        )
                     }
                 },
                 actions = {
