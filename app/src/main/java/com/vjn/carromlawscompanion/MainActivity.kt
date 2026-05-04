@@ -101,7 +101,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.vjn.carromlawscompanion.ui.animation.RuleVisuals
 import com.vjn.carromlawscompanion.ui.animation.VisualFor
+import androidx.compose.ui.graphics.Brush
 import com.vjn.carromlawscompanion.ui.theme.CarromGold
+import com.vjn.carromlawscompanion.ui.theme.CarromQueenRed
 import com.vjn.carromlawscompanion.ui.theme.CarromLawsCompanionTheme
 import com.vjn.carromlawscompanion.ui.theme.CarromLineBlack
 import androidx.compose.foundation.rememberScrollState
@@ -234,7 +236,36 @@ fun HomeScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Laws of Carrom") },
+                title = {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Box(
+                            modifier = Modifier
+                                .size(28.dp)
+                                .background(CarromQueenRed, CircleShape)
+                                .border(2.dp, CarromGold, CircleShape)
+                        )
+                        Spacer(modifier = Modifier.size(12.dp))
+                        Column {
+                            Text(
+                                text = "LAWS OF CARROM",
+                                style = MaterialTheme.typography.titleLarge.copy(
+                                    brush = Brush.linearGradient(
+                                        colors = listOf(CarromGold, CarromQueenRed, CarromGold)
+                                    )
+                                ),
+                                fontWeight = FontWeight.ExtraBold,
+                                fontSize = 22.sp,
+                                letterSpacing = 2.sp
+                            )
+                            Text(
+                                text = "Official ICF Companion",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f),
+                                letterSpacing = 1.5.sp
+                            )
+                        }
+                    }
+                },
                 actions = {
                     IconButton(onClick = onSearchClick) {
                         Icon(
@@ -1954,33 +1985,6 @@ fun SettingsScreen(
                             )
                         }
                     }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            // Debug card - shows what's actually saved
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.tertiaryContainer
-                )
-            ) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Text(
-                        text = "🔍 Debug Info",
-                        style = MaterialTheme.typography.labelMedium,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = "Saved value in storage: ${settingsManager.getFontSize().displayName} (scale: ${settingsManager.getFontSize().scale})",
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                    Text(
-                        text = "Currently selected (in UI): ${currentFontSize.displayName}",
-                        style = MaterialTheme.typography.bodySmall
-                    )
                 }
             }
 
