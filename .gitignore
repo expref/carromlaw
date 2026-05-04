@@ -17,3 +17,6 @@ local.properties
 *.class
 *.hprof
 *.so
+*.jks
+*.keystore
+keystore.properties
